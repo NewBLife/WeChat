@@ -10,6 +10,16 @@
         public const string Music = "music";
         public const string Location = "location";
         public const string Link = "link";
+        public const string Event = "event";
 
+    }
+
+
+    public static class EventType {
+        public const string subscribe = "subscribe";
+        public const string unsubscribe = "unsubscribe";
+        public const string Location = "LOCATION";
+        public const string Click = "CLICK";
+        public const string View = "VIEW";
     }
 }

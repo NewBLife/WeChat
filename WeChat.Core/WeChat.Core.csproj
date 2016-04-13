@@ -55,8 +55,8 @@
     <Compile Include="XmlModels\BaseEvent.cs" />
     <Compile Include="XmlModels\BaseMessage.cs" />
     <Compile Include="XmlModels\Request\RequestBaseMessage.cs" />
-    <Compile Include="XmlModels\Request\RequestEventClick.cs" />
-    <Compile Include="XmlModels\Request\RequestEventSubscribe.cs" />
+    <Compile Include="XmlModels\Request\Events\RequestEventClick.cs" />
+    <Compile Include="XmlModels\Request\Events\RequestEventSubscribe.cs" />
     <Compile Include="XmlModels\Request\RequestImage.cs" />
     <Compile Include="XmlModels\Request\RequestLink.cs" />
     <Compile Include="XmlModels\Request\RequestLocation.cs" />

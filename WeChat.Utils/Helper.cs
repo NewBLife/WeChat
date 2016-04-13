@@ -16,10 +16,8 @@ namespace WeChat.Utils
             string tmpStr = string.Join("", arrTmp);
             tmpStr = Sha1(tmpStr);
             var resultValue = tmpStr.ToLower();
-            var msg = "Validate source={0},Target={1},Result={2}";
             var flag = resultValue == signature;
-            Log4NetHelper.WriteLog(string.Format(msg, signature, resultValue, flag));
-            if (flag)
+            if (resultValue == signature)
             {
                 return true;
             }
@@ -34,12 +32,6 @@ namespace WeChat.Utils
             byte[] cleanBytes = Encoding.Default.GetBytes(text);
             byte[] hashedBytes = System.Security.Cryptography.SHA1.Create().ComputeHash(cleanBytes);
             return BitConverter.ToString(hashedBytes).Replace("-", "");
-        }
-
-        public static string GetPath(string xmlFilePath)
-        {
-            var path = "";
-            return path;
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public class BaseEvent:BaseMessage
     {
-         
+         public string Event { get; set; }
     }
 }
