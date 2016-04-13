@@ -76,7 +76,9 @@ namespace WeChat.Portal.Controllers
                 response= Execute(postString);
             }
             else response= new ResponseText() { Content = "请求异常" };
+            var abc = response.ToXml();
             return response;
+            
             //HttpResponseMessage responseMessage =
             //   new HttpResponseMessage { Content = new StringContent(response.ToXml(), Encoding.GetEncoding("UTF-8"), "application/xml") };
             //return responseMessage;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using WeChat.Core.Constants;
 using WeChat.Core.Entitys;
 
@@ -7,7 +8,7 @@ namespace WeChat.Core.XmlModels.Response
     /// <summary>
     /// 回复图文消息
     /// </summary>
-    [System.Xml.Serialization.XmlRoot(ElementName = "xml")]
+    [XmlRoot(ElementName = "xml")]
     public class ResponseNews : BaseMessage
     {
         public ResponseNews()

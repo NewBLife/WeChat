@@ -1,11 +1,14 @@
-﻿using WeChat.Core.Constants;
+﻿using System;
+using System.Xml.Serialization;
+using WeChat.Core.Constants;
 
 namespace WeChat.Core.XmlModels.Response
 {
     /// <summary>
     /// 回复文本消息
     /// </summary>
-    [System.Xml.Serialization.XmlRoot(ElementName = "xml")]
+    [XmlRoot(ElementName = "xml")]
+    [Serializable]
     public class ResponseText : BaseMessage
     {
         public ResponseText()

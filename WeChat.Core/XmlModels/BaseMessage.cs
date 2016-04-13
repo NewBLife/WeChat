@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 using WeChat.Core.Extensions;
+using WeChat.Core.XmlModels.Response;
 
 namespace WeChat.Core.XmlModels
 {
@@ -8,6 +9,13 @@ namespace WeChat.Core.XmlModels
     /// 基础消息内容
     /// </summary>
     [XmlRoot(ElementName = "xml")]
+    [Serializable]
+    [XmlInclude(typeof(ResponseNews))]
+    [XmlInclude(typeof(ResponseImage))]
+    [XmlInclude(typeof(ResponseMusic))]
+    [XmlInclude(typeof(ResponseText))]
+    [XmlInclude(typeof(ResponseVideo))]
+    [XmlInclude(typeof(ResponseVoice))]
     public class BaseMessage
     {
         /// <summary>

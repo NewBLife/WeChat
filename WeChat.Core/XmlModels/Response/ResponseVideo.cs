@@ -1,8 +1,10 @@
+using System.Xml.Serialization;
 using WeChat.Core.Constants;
 using WeChat.Core.Entitys;
 
 namespace WeChat.Core.XmlModels.Response
 {
+    [XmlRoot(ElementName = "xml")]
     public class ResponseVideo : BaseMessage
     {
         public ResponseVideo()
