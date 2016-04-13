@@ -35,5 +35,11 @@ namespace WeChat.Utils
             byte[] hashedBytes = System.Security.Cryptography.SHA1.Create().ComputeHash(cleanBytes);
             return BitConverter.ToString(hashedBytes).Replace("-", "");
         }
+
+        public static string GetPath(string xmlFilePath)
+        {
+            var path = "";
+            return path;
+        }
     }
 }

@@ -219,7 +219,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -236,6 +238,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WeChat.Core\WeChat.Core.csproj">
+      <Project>{8ec71fc5-e27a-4db8-83e0-69b160746bec}</Project>
+      <Name>WeChat.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeChat.Utils\WeChat.Utils.csproj">
       <Project>{5587468f-b567-46b7-a965-e7484c50252b}</Project>
       <Name>WeChat.Utils</Name>

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EC71FC5-E27A-4DB8-83E0-69B160746BEC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WeChat.Core</RootNamespace>
+    <AssemblyName>WeChat.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WeixinAction.cs" />
+    <Compile Include="Constants\MsgType.cs" />
+    <Compile Include="Entitys\ArticleEntity.cs" />
+    <Compile Include="Entitys\MusicEntity.cs" />
+    <Compile Include="Entitys\VideoEntity.cs" />
+    <Compile Include="Entitys\VoiceEntity.cs" />
+    <Compile Include="Extensions\DateTimeExtension.cs" />
+    <Compile Include="IWeixinAction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeixinApiDispatch.cs" />
+    <Compile Include="XmlHelper.cs" />
+    <Compile Include="XmlModels\BaseEvent.cs" />
+    <Compile Include="XmlModels\BaseMessage.cs" />
+    <Compile Include="XmlModels\Request\RequestBaseMessage.cs" />
+    <Compile Include="XmlModels\Request\RequestEventClick.cs" />
+    <Compile Include="XmlModels\Request\RequestEventSubscribe.cs" />
+    <Compile Include="XmlModels\Request\RequestImage.cs" />
+    <Compile Include="XmlModels\Request\RequestLink.cs" />
+    <Compile Include="XmlModels\Request\RequestLocation.cs" />
+    <Compile Include="XmlModels\Request\RequestText.cs" />
+    <Compile Include="Entitys\ImageEntity.cs" />
+    <Compile Include="XmlModels\Request\RequestVideo.cs" />
+    <Compile Include="XmlModels\Request\RequestVoice.cs" />
+    <Compile Include="XmlModels\Response\ResponseImage.cs" />
+    <Compile Include="XmlModels\Response\ResponseMusic.cs" />
+    <Compile Include="XmlModels\Response\ResponseNews.cs" />
+    <Compile Include="XmlModels\Response\ResponseText.cs" />
+    <Compile Include="XmlModels\Response\ResponseVideo.cs" />
+    <Compile Include="XmlModels\Response\ResponseVoice.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeChat.Utils\WeChat.Utils.csproj">
+      <Project>{5587468f-b567-46b7-a965-e7484c50252b}</Project>
+      <Name>WeChat.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

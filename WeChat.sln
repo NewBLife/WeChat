@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChat.Portal", "WeChat.Por
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChat.Utils", "WeChat.Utils\WeChat.Utils.csproj", "{5587468F-B567-46B7-A965-E7484C50252B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChat.Core", "WeChat.Core\WeChat.Core.csproj", "{8EC71FC5-E27A-4DB8-83E0-69B160746BEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5587468F-B567-46B7-A965-E7484C50252B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5587468F-B567-46B7-A965-E7484C50252B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5587468F-B567-46B7-A965-E7484C50252B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC71FC5-E27A-4DB8-83E0-69B160746BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC71FC5-E27A-4DB8-83E0-69B160746BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC71FC5-E27A-4DB8-83E0-69B160746BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC71FC5-E27A-4DB8-83E0-69B160746BEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

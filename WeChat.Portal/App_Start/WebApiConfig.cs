@@ -20,8 +20,17 @@ namespace WeChat.Portal
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            var appFormatterType = config.Formatters.XmlFormatter;
-            config.Formatters.Remove(appFormatterType);
+            //var appFormatterType = config.Formatters.XmlFormatter;
+            //for (int i = 0; i < config.Formatters.Count; i++)
+            //{
+            //    config.Formatters.RemoveAt(0);
+            //}
+            //config.Formatters.Add(appFormatterType);
+            //#region DEBUG
+
+            //#endregion DEBUG
+            //var appFormatterType = config.Formatters.XmlFormatter;
+            //config.Formatters.Remove(appFormatterType);
         }
     }
 }
