@@ -10,7 +10,7 @@ namespace WeChat.Core.XmlModels.Response
     /// <summary>
     /// 回复文本消息
     /// </summary>
-    [XmlRoot(ElementName = "xml")]
+    [XmlRoot(ElementName = "xml", Namespace = "")]
     [Serializable]
     public class ResponseText : BaseMessage
     {

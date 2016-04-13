@@ -17,14 +17,14 @@ namespace WeChat.Core
     {
         private static XmlHelper _xmlHelper;
         #region 字段定义
-      
+
         #endregion
 
         #region 构造方法
-      
+
         private XmlHelper()
         {
-           
+
         }
         public static XmlHelper Instance()
         {
@@ -36,10 +36,13 @@ namespace WeChat.Core
         public string Serializer<T>(T obj)
         {
             string xmlString;
+            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+            //Add an empty namespace and empty value
+            ns.Add("", "");
             XmlSerializer xmlserializer = new XmlSerializer(typeof(T));
             using (MemoryStream ms = new MemoryStream())
             {
-                xmlserializer.Serialize(ms, obj);
+                xmlserializer.Serialize(ms, obj, ns);
                 xmlString = Encoding.UTF8.GetString(ms.ToArray());
             }
             return xmlString;
