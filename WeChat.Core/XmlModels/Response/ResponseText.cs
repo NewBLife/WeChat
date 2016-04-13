@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using WeChat.Core.Constants;
+using WeChat.Core.Extensions;
 
 namespace WeChat.Core.XmlModels.Response
 {
@@ -21,10 +24,23 @@ namespace WeChat.Core.XmlModels.Response
             this.FromUserName = info.ToUserName;
             this.ToUserName = info.FromUserName;
         }
+        [XmlElement("Content")]
+        public XmlCDataSection XmlContent
+        {
+            get { return new XmlDataDocument().CreateCDataSection(Content); }
+            set { Content = value.Value; }
+        }
+
 
         /// <summary>
         /// 内容
-        /// </summary>        
+        /// </summary>    
+        [XmlIgnore]
         public string Content { get; set; }
+        public override string ToXml()
+        {
+            this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
+            return XmlHelper.Instance().Serializer(this);
+        }
     }
 }

@@ -23,6 +23,8 @@ namespace WeChat.Core
         /// <returns></returns>
         BaseMessage HandleImage(RequestImage info);
 
+        BaseMessage HandleVoice(RequestVoice info);
+
         ///// <summary>
         ///// 对订阅请求事件进行处理
         ///// </summary>
@@ -36,6 +38,6 @@ namespace WeChat.Core
         ///// <param name="info">菜单单击请求事件信息实体</param>
         ///// <returns></returns>
         //BaseMessage HandleEventClick(RequestEventClick info);
-        
+
     }
 }

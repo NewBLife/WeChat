@@ -22,12 +22,20 @@ namespace WeChat.Core
         {
             var response = new ResponseImage(info)
             {
-                Image = new ImageEntity() {MediaId = info.MediaId}
+                Image = new ImageEntity() { MediaId = info.MediaId }
             };
             return response;
 
         }
+        public BaseMessage HandleVoice(RequestVoice info)
+        {
+            var response = new ResponseVoice(info)
+            {
+                Voice = new VoiceEntity() { MediaId = info.MediaId }
+            };
+            return response;
 
+        }
         //public BaseMessage HandleEventSubscribe(RequestEventSubscribe info)
         //{
         //    var msg = "你发送了文本【{0}】";

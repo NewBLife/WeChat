@@ -46,7 +46,7 @@ namespace WeChat.Portal.Controllers
         }
 
         [HttpPost]
-        public BaseMessage Post()
+        public HttpResponseMessage Post()
         {
             string postString = string.Empty;
             using (Stream stream = HttpContext.Current.Request.InputStream)
@@ -60,15 +60,14 @@ namespace WeChat.Portal.Controllers
 
 
                 postString = @"<xml>
-    <ToUserName><![CDATA[gh_1769d357444d]]></ToUserName>
-    <FromUserName><![CDATA[opKrYwas6Lx4_qRK9s9-NHLV-izo]]></FromUserName>
-    <CreateTime>1460532091</CreateTime>
-    <MsgType><![CDATA[text]]></MsgType>
-    <Content><![CDATA[12]]></Content>
-    <MsgId>6272937566006716052</MsgId>
-    <Encrypt><![CDATA[xbbVQuLzMNOg8hqmnKcgvBdYt+Qd5B9fe41X/yXADjr3Ss2lklvOhOsKHXgPSz3oc8BBVc+qp7897DybO3k34r2c+nNO6QF1u9sH9pi1puOCyXotSni3rL2MsdH4uamNp0ghxeYb+LNJCFrGPEJadlAt6jqFLVpqknFHoUOA64AsYQJPA0D0htMmohz9Pj+JyN20nHu2IxhyNQjTrOMSNV6tF/n7SWzh5J6tD+oiH0pPpQSm62J/Gf57fbMUBu0tW62Z7aNM8sf3viD9ISiAB95y/fdH9p+9v2taUnDrPPwYJyu0NYlLwZUJQUc8qAZHBu29ZChN/aODUxrASSipWuJNjwT2NhmOWDAjRi99f41fykQyJUbIIYQSxY/DanKjTIGyz7RllN2ex78lW60WSku1hfruoWxvKhCzI+Vd/8U=]]></Encrypt>
-</xml>
-";
+                                <ToUserName><![CDATA[gh_1769d357444d]]></ToUserName>
+                                <FromUserName><![CDATA[opKrYwas6Lx4_qRK9s9-NHLV-izo]]></FromUserName>
+                                <CreateTime>1460532091</CreateTime>
+                                <MsgType><![CDATA[text]]></MsgType>
+                                <Content><![CDATA[12]]></Content>
+                                <MsgId>6272937566006716052</MsgId>
+                                <Encrypt><![CDATA[xbbVQuLzMNOg8hqmnKcgvBdYt+Qd5B9fe41X/yXADjr3Ss2lklvOhOsKHXgPSz3oc8BBVc+qp7897DybO3k34r2c+nNO6QF1u9sH9pi1puOCyXotSni3rL2MsdH4uamNp0ghxeYb+LNJCFrGPEJadlAt6jqFLVpqknFHoUOA64AsYQJPA0D0htMmohz9Pj+JyN20nHu2IxhyNQjTrOMSNV6tF/n7SWzh5J6tD+oiH0pPpQSm62J/Gf57fbMUBu0tW62Z7aNM8sf3viD9ISiAB95y/fdH9p+9v2taUnDrPPwYJyu0NYlLwZUJQUc8qAZHBu29ZChN/aODUxrASSipWuJNjwT2NhmOWDAjRi99f41fykQyJUbIIYQSxY/DanKjTIGyz7RllN2ex78lW60WSku1hfruoWxvKhCzI+Vd/8U=]]></Encrypt>
+                            </xml>";
 
             BaseMessage response;
             if (!string.IsNullOrEmpty(postString))
@@ -76,12 +75,12 @@ namespace WeChat.Portal.Controllers
                 response= Execute(postString);
             }
             else response= new ResponseText() { Content = "请求异常" };
-            var abc = response.ToXml();
-            return response;
-            
-            //HttpResponseMessage responseMessage =
-            //   new HttpResponseMessage { Content = new StringContent(response.ToXml(), Encoding.GetEncoding("UTF-8"), "application/xml") };
-            //return responseMessage;
+            //var abc = response.ToXml();
+            //return response;
+
+            HttpResponseMessage responseMessage =
+               new HttpResponseMessage { Content = new StringContent(response.ToXml(), Encoding.GetEncoding("UTF-8"), "application/xml") };
+            return responseMessage;
         }
 
         private BaseMessage Execute(string postStr)

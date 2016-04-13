@@ -30,6 +30,11 @@ namespace WeChat.Core
                     RequestImage imageObj = XmlHelper.Instance().Deserializer<RequestImage>(postStr);
                     response = _weixinAction.HandleImage(imageObj);
                     break;
+
+                case MsgType.Voice:
+                    RequestVoice voiceObj = XmlHelper.Instance().Deserializer<RequestVoice>(postStr);
+                    response = _weixinAction.HandleVoice(voiceObj);
+                    break;
             }
             return response;
         }
