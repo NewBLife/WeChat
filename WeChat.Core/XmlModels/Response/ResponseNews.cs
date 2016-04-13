@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using WeChat.Core.Constants;
 using WeChat.Core.Entitys;
+using WeChat.Core.Extensions;
 
 namespace WeChat.Core.XmlModels.Response
 {
@@ -42,8 +44,14 @@ namespace WeChat.Core.XmlModels.Response
         /// 图文列表。
         /// 多条图文消息信息，默认第一个item为大图,注意，如果图文数超过10，则将会无响应
         /// </summary>
-        [System.Xml.Serialization.XmlArrayItem("item")]
+        [XmlArrayItem("item")]
         public List<ArticleEntity> Articles { get; set; }
+
+        public override string ToXml()
+        {
+            this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
+            return XmlHelper.Instance().Serializer(this);
+        }
 
     }
 }

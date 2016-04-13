@@ -60,14 +60,16 @@ namespace WeChat.Portal.Controllers
 
 
                 postString = @"<xml>
-                                <ToUserName><![CDATA[gh_1769d357444d]]></ToUserName>
-                                <FromUserName><![CDATA[opKrYwas6Lx4_qRK9s9-NHLV-izo]]></FromUserName>
-                                <CreateTime>1460532091</CreateTime>
-                                <MsgType><![CDATA[text]]></MsgType>
-                                <Content><![CDATA[12]]></Content>
-                                <MsgId>6272937566006716052</MsgId>
-                                <Encrypt><![CDATA[xbbVQuLzMNOg8hqmnKcgvBdYt+Qd5B9fe41X/yXADjr3Ss2lklvOhOsKHXgPSz3oc8BBVc+qp7897DybO3k34r2c+nNO6QF1u9sH9pi1puOCyXotSni3rL2MsdH4uamNp0ghxeYb+LNJCFrGPEJadlAt6jqFLVpqknFHoUOA64AsYQJPA0D0htMmohz9Pj+JyN20nHu2IxhyNQjTrOMSNV6tF/n7SWzh5J6tD+oiH0pPpQSm62J/Gf57fbMUBu0tW62Z7aNM8sf3viD9ISiAB95y/fdH9p+9v2taUnDrPPwYJyu0NYlLwZUJQUc8qAZHBu29ZChN/aODUxrASSipWuJNjwT2NhmOWDAjRi99f41fykQyJUbIIYQSxY/DanKjTIGyz7RllN2ex78lW60WSku1hfruoWxvKhCzI+Vd/8U=]]></Encrypt>
-                            </xml>";
+                            <ToUserName><![CDATA[gh_1769d357444d]]></ToUserName>
+                            <FromUserName><![CDATA[opKrYwas6Lx4_qRK9s9-NHLV-izo]]></FromUserName>
+                            <CreateTime>1460546052</CreateTime>
+                            <MsgType><![CDATA[voice]]></MsgType>
+                            <MediaId><![CDATA[hYjZ7-XjECCUsowZt8osfmAg_cWkXSE5llTbnU2-pEZuFSKy_1GbC8haobE-9xaR]]></MediaId>
+                            <Format><![CDATA[amr]]></Format>
+                            <MsgId>6272997528045139950</MsgId>
+                            <Recognition><![CDATA[]]></Recognition>
+                            <Encrypt><![CDATA[kYqL02v78FZ9wIusOCz7xprS52pRKReMFlJSD2NNuYOWjwGk/K22W9HvAOwQ6tWLzTgH3s3kREmWnuctyKcyFFzXESggbFTIvU1FMcus9KRfNWYfp6raHk9v15kLb7llQ5MdLyoJTDz1SdUOrmjY7fF59kqLHXWoLIlY2OlzFqf1wwy0dFsy8DO2Kis3c+pFCy1GjjE0T3B+LbcKTL4N6Sx6PFokyMiPqGvx39bi6YVBYl9Ya2xe8fZTHDTGh5zmRxAq+ZXQUecRIX8mALQyWxvegtAuByBuTFeHWdp1L2kw4bNd4f6sspJcGesZGSbPSwmDFa6wOPR+Q7kBP3CVAAAkQezCBvul8+WRoHiXwmOJd92moDpDYgqyc+1uiQgZCfaGaWJTLnWdb2BiqijmyIJqIItVK74q6l/ZP6WeCZzXp5+owqCV86WmctBQztTvwYdLE4ATQ5jghLUrfCzYWAcyyvKM21X+iCAa80xiwTug6Ad0E75IiDgrmgdqplGRrpR21+MrrQ3SxTuRTRe7mN6P8D3bb9LuCaB0R3qVDb9ujVxhcnChna38Uz3f4WQxUjrpKSpBpPTDokAq1jTmVcA42AT3LC1MzrGBtZrCXWsG+lMP9rWKgGYeu5PLN/w0]]></Encrypt>
+                        </xml>";
 
             BaseMessage response;
             if (!string.IsNullOrEmpty(postString))
