@@ -24,10 +24,10 @@ namespace WeChat.Portal.Controllers
         [ApiActionFilter]
         public HttpResponseMessage Get(string signature, string timestamp, string nonce, string echostr)
         {
-           
+
             var token = AppSetting.Token;
             var encodingAesKey = AppSetting.EncodingAESKey;
-            var flag = Helper.CheckSignature(token, encodingAesKey, signature, timestamp, nonce, echostr);
+            var flag = Helper.CheckSignature(token, signature, timestamp, nonce);
             Log4NetHelper.WriteLog("response Validate :" + flag);
             var value = string.Empty;
             if (flag)
