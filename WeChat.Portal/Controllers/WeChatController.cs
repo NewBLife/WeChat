@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
+using WeChat.Portal.Filters;
 using WeChat.Utils;
 
 namespace WeChat.Portal.Controllers
@@ -19,13 +21,23 @@ namespace WeChat.Portal.Controllers
         /// <param name="echostr">随机字符串</param>
         /// <returns></returns>
         [HttpGet]
-        public string Get(string signature, string timestamp, string nonce, string echostr)
+        [ApiActionFilter]
+        public HttpResponseMessage Get(string signature, string timestamp, string nonce, string echostr)
         {
-
+           
             var token = AppSetting.Token;
-            var encodingAESKey = AppSetting.EncodingAESKey;
-            var value = Helper.CheckSignature(token, encodingAESKey, signature, timestamp, nonce, echostr);
-            return value;
+            var encodingAesKey = AppSetting.EncodingAESKey;
+            var flag = Helper.CheckSignature(token, encodingAesKey, signature, timestamp, nonce, echostr);
+            Log4NetHelper.WriteLog("response Validate :" + flag);
+            var value = string.Empty;
+            if (flag)
+            {
+                value = echostr;
+            }
+            HttpResponseMessage responseMessage =
+               new HttpResponseMessage { Content = new StringContent(value, Encoding.GetEncoding("UTF-8"), "text/plain") };
+            return responseMessage;
+
         }
 
         [HttpPost]
