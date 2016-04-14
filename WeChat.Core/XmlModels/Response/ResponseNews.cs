@@ -15,7 +15,7 @@ namespace WeChat.Core.XmlModels.Response
     {
         public ResponseNews()
         {
-            this.MsgType = Constants.MsgType.News.ToString().ToLower();
+            MsgType = ResponseType.News.ToString().ToLower();
 
             this.Articles = new List<ArticleEntity>();
         }
@@ -50,7 +50,7 @@ namespace WeChat.Core.XmlModels.Response
         public override string ToXml()
         {
             this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
-            return XmlHelper.Instance().Serializer(this);
+            return this.Serializer();
         }
 
     }

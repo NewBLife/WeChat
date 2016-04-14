@@ -1,12 +1,15 @@
-﻿using WeChat.Core.Constants;
+﻿using System;
+using System.Xml;
+using WeChat.Core.Constants;
 using WeChat.Core.XmlModels;
 using WeChat.Core.XmlModels.Request;
+using WeChat.Utils;
 
 namespace WeChat.Core
 {
     public class WeixinApiDispatch
     {
-        private IWeixinAction _weixinAction;
+        private readonly IWeixinAction _weixinAction;
 
         public WeixinApiDispatch(IWeixinAction weixinAction)
         {
@@ -16,25 +19,39 @@ namespace WeChat.Core
         {
           _weixinAction = new WeixinAction();
         }
-        public BaseMessage Execute(string postStr)
+        public BaseMessage Execute(XmlDocument document)
         {
-            var requestObj = XmlHelper.Instance().Deserializer<BaseMessage>(postStr);
-            var response = new BaseMessage();
-            switch (requestObj.MsgType)
+            
+            BaseMessage response;
+            MsgType msgType = document.GetMsgType();
+            switch (msgType)
             {
                 case MsgType.Text:
-                    RequestText textObj = XmlHelper.Instance().Deserializer<RequestText>(postStr);
-                    response=_weixinAction.HandleText(textObj);
+                    response = _weixinAction.HandleText(document.Deserializer<RequestText>());
                     break;
                 case MsgType.Image:
-                    RequestImage imageObj = XmlHelper.Instance().Deserializer<RequestImage>(postStr);
-                    response = _weixinAction.HandleImage(imageObj);
+                    response = _weixinAction.HandleImage(document.Deserializer<RequestImage>());
                     break;
-
                 case MsgType.Voice:
-                    RequestVoice voiceObj = XmlHelper.Instance().Deserializer<RequestVoice>(postStr);
-                    response = _weixinAction.HandleVoice(voiceObj);
+                    response = _weixinAction.HandleVoice(document.Deserializer<RequestVoice>());
                     break;
+                case MsgType.Video:
+                    response = _weixinAction.HandleVideo(document.Deserializer<RequestVideo>());
+                    break;
+                case MsgType.ShortVideo:
+                    response = _weixinAction.HandleShortVideo(document.Deserializer<RequestVideo>());
+                    break;
+                case MsgType.Location:
+                    response = _weixinAction.HandleLocation(document.Deserializer<RequestLocation>());
+                    break;
+                case MsgType.Link:
+                    response = _weixinAction.HandleLink(document.Deserializer<RequestLink>());
+                    break;
+                case MsgType.Event:
+                    response = _weixinAction.HandleEventClick(document.Deserializer<RequestEvent>());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             return response;
         }

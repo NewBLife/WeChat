@@ -1,0 +1,77 @@
+﻿using System;
+using System.Xml;
+using WeChat.Core.Constants;
+using WeChat.Core.WeChatEncrypt;
+using WeChat.Utils;
+
+namespace WeChat.Core
+{
+    public static class WeChatXmlHelper
+    {
+
+        public static XmlDocument Execute(string context)
+        {
+            if (string.IsNullOrWhiteSpace(context))
+                throw new ArgumentException("Argument is null or whitespace", nameof(context));
+            var doc = new XmlDocument();
+            doc.LoadXml(context);
+            if (AppSetting.Encrypt)
+            {
+                doc = EncryptDocument(doc);
+            }
+            return doc;
+        }
+
+        public static XmlDocument EncryptDocument(XmlDocument document)
+        {
+            if (document == null) throw new ArgumentNullException(nameof(document));
+            var node = document.GetNodel("Encrypt");
+            if (node == null) throw new Exception("找不到 Encrypt 节点");
+
+            var utils = new WeChatMsgCrypt(AppSetting.Token,AppSetting.EncodingAesKey,AppSetting.AppId);
+            //var content = 
+            var doc = new XmlDocument();
+
+            if (document.DocumentElement != null)
+            {
+                var encryptElement = document.DocumentElement["Encrypt"];
+            }
+            return doc;
+        }
+
+        private static XmlNode GetNodel(this XmlDocument document,string nodeName)
+        {
+            if (document == null) throw new ArgumentNullException(nameof(document));
+            XmlElement root = document.DocumentElement;
+            if (root == null) throw new ArgumentNullException(nameof(root));
+            XmlNode node = root.SelectSingleNode(nodeName);//读取Students节点
+            return node;
+        }
+
+        public static MsgType GetMsgType(this XmlDocument document)
+        {
+            if (document == null) throw new ArgumentNullException(nameof(document));
+            var node = document.GetNodel("MsgType");
+            if (node == null) throw new Exception("找不到 MsgType 节点");
+            var msgTypeName = node.InnerText;
+            var msgType= MsgType.Text;
+            if (Enum.TryParse(msgTypeName, true, out msgType))
+            {
+                return msgType;
+            }
+            return msgType;
+
+
+        }
+
+        public static EventType GetEventType(this XmlDocument document)
+        {
+            if (document == null) throw new ArgumentNullException(nameof(document));
+            var node = document.GetNodel("Event");
+            if (node == null) throw new Exception("找不到 Event 节点");
+            var eventTypeName = node.InnerText;
+            var eventType = EventType.Click;
+            return Enum.TryParse(eventTypeName, true, out eventType) ? eventType : eventType;
+        }
+    }
+}

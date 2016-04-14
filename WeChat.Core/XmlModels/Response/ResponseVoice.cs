@@ -11,7 +11,7 @@ namespace WeChat.Core.XmlModels.Response
     {
         public ResponseVoice()
         {
-            this.MsgType = Constants.MsgType.Voice.ToString().ToLower();
+            MsgType = ResponseType.Voice.ToString().ToLower();
         }
 
         public ResponseVoice(BaseMessage info) : this()
@@ -25,7 +25,7 @@ namespace WeChat.Core.XmlModels.Response
         public override string ToXml()
         {
             this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
-            return XmlHelper.Instance().Serializer(this);
+            return this.Serializer();
         }
     }
 }

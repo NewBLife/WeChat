@@ -12,7 +12,7 @@ namespace WeChat.Core.XmlModels.Response
     {
         public ResponseImage()
         {
-            this.MsgType = Constants.MsgType.Image.ToString().ToLower();
+            MsgType = ResponseType.Image.ToString().ToLower();
         }
         public ResponseImage(BaseMessage info) : this()
         {
@@ -22,8 +22,8 @@ namespace WeChat.Core.XmlModels.Response
         public ImageEntity Image { get; set; }
         public override string ToXml()
         {
-            this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
-            return XmlHelper.Instance().Serializer(this);
+            CreateTime = DateTime.Now.DateTimeToInt();//重新更新
+            return this.Serializer();
         }
     }
 }

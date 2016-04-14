@@ -9,35 +9,15 @@ namespace WeChat.Core
     /// </summary>
     public interface IWeixinAction
     {
-        /// <summary>
-        /// 对文本请求信息进行处理
-        /// </summary>
-        /// <param name="info">文本信息实体</param>
-        /// <returns></returns>
+       
         BaseMessage HandleText(RequestText info);
-
-        /// <summary>
-        /// 对图片请求信息进行处理
-        /// </summary>
-        /// <param name="info">图片信息实体</param>
-        /// <returns></returns>
         BaseMessage HandleImage(RequestImage info);
-
         BaseMessage HandleVoice(RequestVoice info);
-
-        ///// <summary>
-        ///// 对订阅请求事件进行处理
-        ///// </summary>
-        ///// <param name="info">订阅请求事件信息实体</param>
-        ///// <returns></returns>
-        //BaseMessage HandleEventSubscribe(RequestEventSubscribe info);
-
-        ///// <summary>
-        ///// 对菜单单击请求事件进行处理
-        ///// </summary>
-        ///// <param name="info">菜单单击请求事件信息实体</param>
-        ///// <returns></returns>
-        //BaseMessage HandleEventClick(RequestEventClick info);
+        BaseMessage HandleVideo(RequestVideo info);
+        BaseMessage HandleShortVideo(RequestVideo info);
+        BaseMessage HandleLocation(RequestLocation info);
+        BaseMessage HandleLink(RequestLink info);
+        BaseMessage HandleEventClick(RequestEvent info);
 
     }
 }

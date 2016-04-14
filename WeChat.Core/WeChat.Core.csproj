@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\EnumExten.cs" />
+    <Compile Include="WeChatEncrypt\WeChatMsgCrypt.cs" />
+    <Compile Include="WeChatEncrypt\Cryptography.cs" />
+    <Compile Include="WechatXmlHelper.cs" />
     <Compile Include="WeixinAction.cs" />
     <Compile Include="Constants\MsgType.cs" />
     <Compile Include="Entitys\ArticleEntity.cs" />
@@ -52,11 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeixinApiDispatch.cs" />
     <Compile Include="XmlHelper.cs" />
-    <Compile Include="XmlModels\BaseEvent.cs" />
+    <Compile Include="XmlModels\Request\RequestEvent.cs" />
     <Compile Include="XmlModels\BaseMessage.cs" />
+    <Compile Include="XmlModels\EncryptMessage.cs" />
     <Compile Include="XmlModels\Request\RequestBaseMessage.cs" />
-    <Compile Include="XmlModels\Request\Events\RequestEventClick.cs" />
-    <Compile Include="XmlModels\Request\Events\RequestEventSubscribe.cs" />
     <Compile Include="XmlModels\Request\RequestImage.cs" />
     <Compile Include="XmlModels\Request\RequestLink.cs" />
     <Compile Include="XmlModels\Request\RequestLocation.cs" />

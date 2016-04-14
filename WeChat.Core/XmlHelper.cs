@@ -13,27 +13,11 @@ namespace WeChat.Core
     /// <summary>
     /// Xml的操作公共类
     /// </summary>    
-    public class XmlHelper
+    public static class XmlHelper
     {
-        private static XmlHelper _xmlHelper;
-        #region 字段定义
 
-        #endregion
 
-        #region 构造方法
-
-        private XmlHelper()
-        {
-
-        }
-        public static XmlHelper Instance()
-        {
-            return _xmlHelper ?? (_xmlHelper = new XmlHelper());
-        }
-
-        #endregion
-
-        public string Serializer<T>(T obj)
+        public static string Serializer<T>(this T obj)
         {
             string xmlString;
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
@@ -48,7 +32,7 @@ namespace WeChat.Core
             return xmlString;
         }
 
-        public T Deserializer<T>(string xmlString)
+        public static T Deserializer<T>(this string xmlString)
         {
 
 
@@ -63,6 +47,37 @@ namespace WeChat.Core
                 }
             }
             return t;
+        }
+        public static T Deserializer<T>(this XmlDocument xmlDoc)
+        {
+
+
+            T t = default(T);
+            XmlSerializer xmlserializer = new XmlSerializer(typeof(T));
+            using (Stream xmlstream = new MemoryStream(Encoding.UTF8.GetBytes(xmlDoc.ConvertToString())))
+            {
+                using (XmlReader xmlreader = XmlReader.Create(xmlstream))
+                {
+                    object obj = xmlserializer.Deserialize(xmlreader);
+                    t = (T)obj;
+                }
+            }
+            return t;
+        }
+
+        public static string ConvertToString(this XmlDocument xmlDoc)
+        {
+
+            MemoryStream stream = new MemoryStream();
+            XmlTextWriter writer = new XmlTextWriter(stream, null);
+            writer.Formatting = Formatting.Indented;
+            xmlDoc.Save(writer);
+            StreamReader sr = new StreamReader(stream, System.Text.Encoding.UTF8);
+            stream.Position = 0;
+            string xmlString = sr.ReadToEnd();
+            sr.Close();
+            stream.Close();
+            return xmlString;
         }
     }
 }

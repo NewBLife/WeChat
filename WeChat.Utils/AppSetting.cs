@@ -9,11 +9,12 @@ namespace WeChat.Utils
 {
     public class AppSetting
     {
-        private const string _TokenKey = "Token";
-        private const string _AppIdKey = "AppId";
-        private const string _AppSecretKey = "AppSecret";
-        private const string _EncodingAESKey = "EncodingAESKey";
-
+        private const string TokenKey = "Token";
+        private const string AppIdKey = "AppId";
+        private const string AppSecretKey = "AppSecret";
+        private const string _EncodingAESKey = "EncodingAesKey";
+        private const string EncryptKey = "Encrypt";
+        
         #region Private Methods
 
         public static string GetValue(string Key)
@@ -112,24 +113,16 @@ namespace WeChat.Utils
 
         #region Public Properties
 
-        public static string AppId
-        {
-            get { return GetString(_AppIdKey, ""); }
-        }
+        public static string AppId => GetString(AppIdKey, "");
 
-        public static string AppSecret
-        {
-            get { return GetString(_AppSecretKey, ""); }
-        }
-        public static string Token
-        {
-            get { return GetString(_TokenKey, ""); }
-        }
 
-        public static string EncodingAESKey
-        {
-            get { return GetString(_EncodingAESKey, ""); }
-        }
+        public static string AppSecret => GetString(AppSecretKey, "");
+        public static string Token => GetString(TokenKey, "");
+
+        public static string EncodingAesKey => GetString(_EncodingAESKey, "");/// <summary>
+        /// 是否加密
+        /// </summary>
+        public static bool Encrypt => GetBool(EncryptKey, false);
 
         #endregion
 

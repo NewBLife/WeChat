@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using WeChat.Core.Constants;
@@ -16,7 +15,7 @@ namespace WeChat.Core.XmlModels.Response
     {
         public ResponseText()
         {
-            this.MsgType = Constants.MsgType.Text.ToString().ToLower();
+            MsgType = ResponseType.Text.ToString().ToLower();
         }
 
         public ResponseText(BaseMessage info) : this()
@@ -40,7 +39,7 @@ namespace WeChat.Core.XmlModels.Response
         public override string ToXml()
         {
             this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
-            return XmlHelper.Instance().Serializer(this);
+            return this.Serializer();
         }
     }
 }

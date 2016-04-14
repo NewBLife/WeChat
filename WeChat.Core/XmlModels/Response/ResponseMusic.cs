@@ -11,7 +11,7 @@ namespace WeChat.Core.XmlModels.Response
     {
         public ResponseMusic()
         {
-            this.MsgType = Constants.MsgType.Music.ToString().ToLower();
+            this.MsgType = ResponseType.Music.ToString().ToLower();
         }
 
         public ResponseMusic(BaseMessage info) : this()
@@ -25,7 +25,7 @@ namespace WeChat.Core.XmlModels.Response
         public override string ToXml()
         {
             this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
-            return XmlHelper.Instance().Serializer(this);
+            return this.Serializer();
         }
     }
 }
