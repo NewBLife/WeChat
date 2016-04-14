@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A5F690FB-57DA-4CA0-8F6A-D5101E6986CB}</ProjectGuid>
+    <ProjectGuid>{929A8135-7EDA-44C3-A16D-455281C7F524}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aurore.Framework.Web.Core</RootNamespace>
-    <AssemblyName>Aurore.Framework.Web.Core</AssemblyName>
+    <RootNamespace>Aurore.Framework.Web.Mvc</RootNamespace>
+    <AssemblyName>Aurore.Framework.Web.Mvc</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,19 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caching\CacheManager.cs" />
-    <Compile Include="Caching\Extensions.cs" />
-    <Compile Include="Caching\PerRequestCacheManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Aurore.Framework.Core\Aurore.Framework.Core.csproj">
-      <Project>{b41973cb-c5e7-4b42-9a97-73f3b7a3b96a}</Project>
-      <Name>Aurore.Framework.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

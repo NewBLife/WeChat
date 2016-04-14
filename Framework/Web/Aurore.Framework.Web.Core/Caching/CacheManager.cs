@@ -9,56 +9,56 @@ namespace Aurore.Framework.Web.Core.Caching
 
 	public class CacheManager : ICacheManager
 	{
-        System.Web.Caching.Cache Cache = HttpRuntime.Cache;
+	    readonly System.Web.Caching.Cache _cache = HttpRuntime.Cache;
 
         public void Set(string key, object data)
         {
-            Cache.Insert(key, data);
+            _cache.Insert(key, data);
         }
         public void Set(string key, object data, DateTime absoluteExpiration, TimeSpan slidingExpiration)
         {
-            Cache.Insert(key, data, null,absoluteExpiration, slidingExpiration);
+            _cache.Insert(key, data, null,absoluteExpiration, slidingExpiration);
         }
 
 		public object Get(string Key)
 		{
-			return Cache[Key];
+			return _cache[Key];
 		}
 
         public T Get<T>(string key)
         {
-            return (T)Cache[key];
+            return (T)_cache[key];
         }
 
         public bool IsSet(string key)
         {
-            return Cache[key] != null;
+            return _cache[key] != null;
         }
 
         public void Remove(string Key)
 		{
-			if (Cache[Key] != null) {
-				Cache.Remove(Key);
+			if (_cache[Key] != null) {
+				_cache.Remove(Key);
 			}
 		}
 
 		public void RemoveByPattern(string pattern)
 		{
-			IDictionaryEnumerator enumerator = Cache.GetEnumerator();
+			IDictionaryEnumerator enumerator = _cache.GetEnumerator();
 			Regex rgx = new Regex(pattern, (RegexOptions.Singleline | (RegexOptions.Compiled | RegexOptions.IgnoreCase)));
 			while (enumerator.MoveNext()) {
 				if (rgx.IsMatch(enumerator.Key.ToString())) {
-					Cache.Remove(enumerator.Key.ToString());
+					_cache.Remove(enumerator.Key.ToString());
 				}
 			}
 		}
 
         public void Clear()
         {
-            IDictionaryEnumerator enumerator = Cache.GetEnumerator();
+            IDictionaryEnumerator enumerator = _cache.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                Cache.Remove(enumerator.Key.ToString());
+                _cache.Remove(enumerator.Key.ToString());
             }
         }
 
