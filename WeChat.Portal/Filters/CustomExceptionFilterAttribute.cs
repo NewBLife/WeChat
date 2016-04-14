@@ -4,7 +4,7 @@ using WeChat.Utils;
 
 namespace WeChat.Portal.Filters
 {
-    public class ExceptionFilterAttribute : FilterAttribute, IExceptionFilter
+    public class CustomExceptionFilterAttribute : FilterAttribute, IExceptionFilter
     {
         public void OnException(ExceptionContext filterContext)
         {
@@ -16,7 +16,7 @@ namespace WeChat.Portal.Filters
             };
             var exception = filterContext.Exception;
             HttpRequestBase bases = (HttpRequestBase)filterContext.HttpContext.Request;
-           
+
             Log4NetHelper.WriteLog("\r\n客户机IP:" + bases.UserHostAddress + "\r\n错误地址:" + bases.Url + "\r\n异常信息:" + exception.Message, exception);
 
             filterContext.ExceptionHandled = true;

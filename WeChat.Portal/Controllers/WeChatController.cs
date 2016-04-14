@@ -28,6 +28,7 @@ namespace WeChat.Portal.Controllers
         /// <returns></returns>
         [HttpGet]
         [ApiActionFilter]
+        [ApiExceptionFilter]
         public HttpResponseMessage Get(string signature, string timestamp, string nonce, string echostr)
         {
 
@@ -45,6 +46,7 @@ namespace WeChat.Portal.Controllers
         }
 
         [HttpPost]
+        [ApiExceptionFilter]
         public HttpResponseMessage Post()
         {
             string postString;
@@ -55,6 +57,7 @@ namespace WeChat.Portal.Controllers
                 postString = Encoding.UTF8.GetString(postBytes);
             }
             var document = WeChatXmlHelper.Execute(postString);
+            Log4NetHelper.WriteLog(document.ConvertToString());
             BaseMessage response= Execute(document);
             var responseMessage =
                new HttpResponseMessage { Content = new StringContent(response.ToXml(), Encoding.GetEncoding("UTF-8"), "application/xml") };

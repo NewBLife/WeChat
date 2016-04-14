@@ -9,7 +9,7 @@ namespace WeChat.Portal
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             //filters.Add(new HandleErrorAttribute());
-            filters.Add(new ExceptionFilterAttribute());
+            filters.Add(new CustomExceptionFilterAttribute());
         }
     }
 }
