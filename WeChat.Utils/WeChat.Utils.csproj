@@ -56,6 +56,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Aurore.Framework.Core\Aurore.Framework.Core.csproj">
+      <Project>{b41973cb-c5e7-4b42-9a97-73f3b7a3b96a}</Project>
+      <Name>Aurore.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Web\Aurore.Framework.Web.Core\Aurore.Framework.Web.Core.csproj">
+      <Project>{a5f690fb-57da-4ca0-8f6a-d5101e6986cb}</Project>
+      <Name>Aurore.Framework.Web.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

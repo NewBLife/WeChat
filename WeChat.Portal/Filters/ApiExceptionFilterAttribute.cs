@@ -1,6 +1,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Web.Http.Filters;
+using Aurore.Framework.Web.Mvc;
 using WeChat.Core;
 using WeChat.Core.Extensions;
 using WeChat.Utils;
