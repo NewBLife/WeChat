@@ -164,10 +164,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WeChatController.cs" />
-    <Compile Include="Filters\ApiExceptionFilterAttribute.cs" />
-    <Compile Include="Filters\CustomExceptionFilterAttribute.cs" />
-    <Compile Include="Filters\ApiActionFilterAttribute.cs" />
-    <Compile Include="Filters\WeChatFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,6 +238,10 @@
     <Content Include="Scripts\jquery-2.2.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Framework\Aurore.Framework.Core\Aurore.Framework.Core.csproj">
+      <Project>{b41973cb-c5e7-4b42-9a97-73f3b7a3b96a}</Project>
+      <Name>Aurore.Framework.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\Aurore.Framework.Utils\Aurore.Framework.Utils.csproj">
       <Project>{D82158D3-DE76-4A08-B26A-E0DBCC60118D}</Project>
       <Name>Aurore.Framework.Utils</Name>

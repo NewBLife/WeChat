@@ -445,7 +445,7 @@ window.Modernizr = (function( window, document, undefined ) {
      *
      * We also test for Firefox 4 Multitouch Support.
      *
-     * For more info, see: modernizr.github.com/Modernizr/touch.html
+     * For more msg, see: modernizr.github.com/Modernizr/touch.html
      */
 
     tests['touch'] = function() {
@@ -520,7 +520,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // FF3.6 was EOL'ed on 4/24/12, but the ESR version of FF10
     // will be supported until FF19 (2/12/13), at which time, ESR becomes FF17.
     // FF10 still uses prefixes, so check for it until then.
-    // for more ESR info, see: mozilla.org/en-US/firefox/organizations/faq/
+    // for more ESR msg, see: mozilla.org/en-US/firefox/organizations/faq/
     tests['websockets'] = function() {
         return 'WebSocket' in window || 'MozWebSocket' in window;
     };

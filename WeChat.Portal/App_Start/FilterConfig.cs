@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using WeChat.Portal.Filters;
+using Aurore.Framework.Web.Mvc.Filters;
 
 namespace WeChat.Portal
 {

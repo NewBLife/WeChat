@@ -31,7 +31,7 @@ namespace WeChat.Portal
             //    userid = uinfo[0];
             //    username = uinfo[1];
             //}
-            //Log4NetHelper.WriteLog("\r\n用户ID:" + userid + "\r\n用户名:" + username + "\r\n客户机IP:" + Request.UserHostAddress + "\r\n错误地址:" + Request.Url + "\r\n异常信息:" + Server.GetLastError().Message, objExp);
+            //Log4NetHelper.WriteError("\r\n用户ID:" + userid + "\r\n用户名:" + username + "\r\n客户机IP:" + Request.UserHostAddress + "\r\n错误地址:" + Request.Url + "\r\n异常信息:" + Server.GetLastError().Message, objExp);
 
         }
 

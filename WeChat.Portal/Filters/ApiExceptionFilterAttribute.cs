@@ -12,7 +12,7 @@ namespace WeChat.Portal.Filters
             var exception = filterContext.Exception;
             var bases = filterContext.Request;
 
-            Log4NetHelper.WriteLog("\r\n客户机IP:" + bases.RequestUri.Host + "\r\n错误地址:" + bases.RequestUri.AbsoluteUri + "\r\n异常信息:" + exception.Message, exception);
+            Log4NetHelper.WriteError("\r\n客户机IP:" + bases.RequestUri.Host + "\r\n错误地址:" + bases.RequestUri.AbsoluteUri + "\r\n异常信息:" + exception.Message, exception);
 
             var obj = new ResponseEntity<string>()
             {

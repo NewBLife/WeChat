@@ -8,9 +8,9 @@ namespace Aurore.Framework.Web.Mvc.Filters
     {
         private readonly ILogger _logger;
 
-        public ApiActionFilterAttribute(ILogger logger)
+        public ApiActionFilterAttribute()
         {
-            _logger = logger;
+            _logger = null;
         }
 
         public override void OnActionExecuting(HttpActionContext actionContext)
@@ -19,7 +19,7 @@ namespace Aurore.Framework.Web.Mvc.Filters
             var request = actionContext.Request;
             string url = request.RequestUri.AbsoluteUri;
             string requestFormat = "Request Url：{0}";
-            _logger.WriteLog(string.Format(requestFormat, url));
+            _logger.WriteError(string.Format(requestFormat, url));
             //获取url中的参数
             string queryString = request.RequestUri.Query;
         }

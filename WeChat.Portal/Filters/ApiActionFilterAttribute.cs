@@ -12,7 +12,7 @@ namespace WeChat.Portal.Filters
             var request = actionContext.Request;
             string url = request.RequestUri.AbsoluteUri;
             string requestFormat = "Request Url：{0}";
-            Log4NetHelper.WriteLog(string.Format(requestFormat, url));
+            Log4NetHelper.ErrorLog(string.Format(requestFormat, url));
             //获取url中的参数
             string queryString = request.RequestUri.Query;
         }

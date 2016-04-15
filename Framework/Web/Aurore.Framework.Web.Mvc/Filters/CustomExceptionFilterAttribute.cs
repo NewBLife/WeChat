@@ -8,9 +8,10 @@ namespace Aurore.Framework.Web.Mvc.Filters
     {
         private readonly ILogger _logger;
 
-        public CustomExceptionFilterAttribute(ILogger logger)
+        public CustomExceptionFilterAttribute()
         {
-            _logger = logger;
+            //TODO
+            _logger = null;
         }
 
         public void OnException(ExceptionContext filterContext)
@@ -25,7 +26,7 @@ namespace Aurore.Framework.Web.Mvc.Filters
             HttpRequestBase bases = filterContext.HttpContext.Request;
             var auroreException = filterContext.Exception as AuroreException;
             var exception = auroreException ?? new AuroreException(filterContext.Exception);
-            _logger.WriteLog("\r\n客户机IP:" + bases.UserHostAddress + "\r\n错误地址:" + bases.Url + "\r\n异常信息:" + exception.Message, exception);
+            _logger.WriteError("\r\n客户机IP:" + bases.UserHostAddress + "\r\n错误地址:" + bases.Url + "\r\n异常信息:" + exception.Message, exception);
 
             filterContext.ExceptionHandled = true;
         }

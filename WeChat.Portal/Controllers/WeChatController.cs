@@ -5,16 +5,24 @@ using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Xml;
+using Aurore.Framework.Core;
 using Aurore.Framework.Utils;
+using Aurore.Framework.Web.Mvc.Filters;
 using WeChat.Core;
 using WeChat.Core.XmlModels;
-using WeChat.Portal.Filters;
 using WeChat.Utils;
+using AppSetting = WeChat.Utils.AppSetting;
 
 namespace WeChat.Portal.Controllers
 {
     public class WeChatController : ApiController
     {
+        private readonly ILogger _logger;
+        public WeChatController(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -54,7 +62,7 @@ namespace WeChat.Portal.Controllers
                 postString = Encoding.UTF8.GetString(postBytes);
             }
             var document = WeChatXmlHelper.Execute(postString);
-            Log4NetHelper.WriteLog(document.ConvertToString());
+            _logger.WriteLog(document.ConvertToString());
             BaseMessage response= Execute(document);
             var responseMessage =
                new HttpResponseMessage { Content = new StringContent(response.ToXml(), Encoding.GetEncoding("UTF-8"), "application/xml") };

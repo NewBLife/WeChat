@@ -1,16 +1,17 @@
 ﻿using System;
 using System.IO;
+using Aurore.Framework.Core;
 
 namespace WeChat.Utils
 {
     /// <summary>
     /// 使用LOG4NET记录日志的功能，在WEB.CONFIG里要配置相应的节点
     /// </summary>
-    public class Log4NetHelper
+    public class Log4NetHelper:ILogger
     {
         //log4net日志专用
-        public static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
-        public static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
+        private static readonly log4net.ILog Loginfo = log4net.LogManager.GetLogger("Loginfo");
+        private static readonly log4net.ILog Logerror = log4net.LogManager.GetLogger("Logerror");
 
         public static void SetConfig()
         {
@@ -22,28 +23,27 @@ namespace WeChat.Utils
             log4net.Config.XmlConfigurator.Configure(configFile);
         }
 
-        /// <summary>
-        /// 普通的文件记录日志
-        /// </summary>
-        /// <param name="info"></param>
-        public static void WriteLog(string info)
+        public void WriteLog(string msg)
         {
-            if (loginfo.IsInfoEnabled)
+            if (Loginfo.IsInfoEnabled)
             {
-                loginfo.Info(info);
+                Loginfo.Info(msg);
             }
         }
 
-        /// <summary>
-        /// 错误日志
-        /// </summary>
-        /// <param name="info"></param>
-        /// <param name="se"></param>
-        public static void WriteLog(string info, Exception se)
+        public void WriteError( string msg)
         {
-            if (logerror.IsErrorEnabled)
+            if (Loginfo.IsInfoEnabled)
             {
-                logerror.Error(info, se);
+                Logerror.Error(msg);
+            }
+        }
+
+        public void WriteError(string msg, Exception ex)
+        {
+            if (Loginfo.IsInfoEnabled)
+            {
+                Logerror.Error(msg, ex);
             }
         }
     }
