@@ -7,7 +7,7 @@ using Aurore.Framework.Core.Caching;
 namespace Aurore.Framework.Web.Core.Caching
 {
 
-	public class CacheManager : ICacheManager
+    public class CacheManager : ICacheManager
 	{
 	    readonly System.Web.Caching.Cache _cache = HttpRuntime.Cache;
 

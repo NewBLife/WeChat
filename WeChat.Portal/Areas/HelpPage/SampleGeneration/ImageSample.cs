@@ -8,7 +8,7 @@ namespace WeChat.Portal.Areas.HelpPage
     public class ImageSample
     {
         /// <summary>
-        /// Initializes a new Instance of the <see cref="ImageSample"/> class.
+        /// Initializes a new instance of the <see cref="ImageSample"/> class.
         /// </summary>
         /// <param name="src">The URL of an image.</param>
         public ImageSample(string src)
