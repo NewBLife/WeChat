@@ -27,28 +27,28 @@ namespace WeChat.Core
             switch (msgType)
             {
                 case MsgType.Text:
-                    response = _weixinAction.HandleText(document.Deserializer<RequestText>());
+                    response = _weixinAction.HandleText(document.XmlDeserializer<RequestText>());
                     break;
                 case MsgType.Image:
-                    response = _weixinAction.HandleImage(document.Deserializer<RequestImage>());
+                    response = _weixinAction.HandleImage(document.XmlDeserializer<RequestImage>());
                     break;
                 case MsgType.Voice:
-                    response = _weixinAction.HandleVoice(document.Deserializer<RequestVoice>());
+                    response = _weixinAction.HandleVoice(document.XmlDeserializer<RequestVoice>());
                     break;
                 case MsgType.Video:
-                    response = _weixinAction.HandleVideo(document.Deserializer<RequestVideo>());
+                    response = _weixinAction.HandleVideo(document.XmlDeserializer<RequestVideo>());
                     break;
                 case MsgType.ShortVideo:
-                    response = _weixinAction.HandleShortVideo(document.Deserializer<RequestVideo>());
+                    response = _weixinAction.HandleShortVideo(document.XmlDeserializer<RequestVideo>());
                     break;
                 case MsgType.Location:
-                    response = _weixinAction.HandleLocation(document.Deserializer<RequestLocation>());
+                    response = _weixinAction.HandleLocation(document.XmlDeserializer<RequestLocation>());
                     break;
                 case MsgType.Link:
-                    response = _weixinAction.HandleLink(document.Deserializer<RequestLink>());
+                    response = _weixinAction.HandleLink(document.XmlDeserializer<RequestLink>());
                     break;
                 case MsgType.Event:
-                    response = _weixinAction.HandleEventClick(document.Deserializer<RequestEvent>());
+                    response = _weixinAction.HandleEventClick(document.XmlDeserializer<RequestEvent>());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

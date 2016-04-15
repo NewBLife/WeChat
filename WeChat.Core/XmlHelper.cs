@@ -17,7 +17,7 @@ namespace WeChat.Core
     {
 
 
-        public static string Serializer<T>(this T obj)
+        public static string SerializerToXml<T>(this T obj)
         {
             string xmlString;
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
@@ -32,7 +32,7 @@ namespace WeChat.Core
             return xmlString;
         }
 
-        public static T Deserializer<T>(this string xmlString)
+        public static T XmlDeserializer<T>(this string xmlString)
         {
 
 
@@ -48,7 +48,7 @@ namespace WeChat.Core
             }
             return t;
         }
-        public static T Deserializer<T>(this XmlDocument xmlDoc)
+        public static T XmlDeserializer<T>(this XmlDocument xmlDoc)
         {
 
 

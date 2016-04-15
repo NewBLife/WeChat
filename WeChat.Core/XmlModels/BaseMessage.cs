@@ -74,7 +74,7 @@ namespace WeChat.Core.XmlModels
         public virtual string ToXml()
         {
             this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
-            return this.Serializer();
+            return this.SerializerToXml();
         }
 
     }
