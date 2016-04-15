@@ -45,10 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\EnumExten.cs" />
-    <Compile Include="Extensions\Functions.cs" />
-    <Compile Include="Extensions\JsonHelper.cs" />
-    <Compile Include="ResponseEntity.cs" />
     <Compile Include="WeChatEncrypt\WeChatMsgCrypt.cs" />
     <Compile Include="WeChatEncrypt\Cryptography.cs" />
     <Compile Include="WechatXmlHelper.cs" />
@@ -58,11 +54,9 @@
     <Compile Include="Entitys\MusicEntity.cs" />
     <Compile Include="Entitys\VideoEntity.cs" />
     <Compile Include="Entitys\VoiceEntity.cs" />
-    <Compile Include="Extensions\DateTimeExtension.cs" />
     <Compile Include="IWeixinAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeixinApiDispatch.cs" />
-    <Compile Include="XmlHelper.cs" />
     <Compile Include="XmlModels\Request\RequestEvent.cs" />
     <Compile Include="XmlModels\BaseMessage.cs" />
     <Compile Include="XmlModels\EncryptMessage.cs" />
@@ -82,12 +76,17 @@
     <Compile Include="XmlModels\Response\ResponseVoice.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Framework\Aurore.Framework.Utils\Aurore.Framework.Utils.csproj">
+      <Project>{d82158d3-de76-4a08-b26a-e0dbcc60118d}</Project>
+      <Name>Aurore.Framework.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeChat.Utils\WeChat.Utils.csproj">
       <Project>{5587468f-b567-46b7-a965-e7484c50252b}</Project>
       <Name>WeChat.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

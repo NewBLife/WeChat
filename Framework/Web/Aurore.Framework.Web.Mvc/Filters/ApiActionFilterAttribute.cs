@@ -1,18 +1,25 @@
 ﻿using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using WeChat.Utils;
+using Aurore.Framework.Core;
 
-namespace WeChat.Portal.Filters
+namespace Aurore.Framework.Web.Mvc.Filters
 {
     public class ApiActionFilterAttribute : ActionFilterAttribute
     {
+        private readonly ILogger _logger;
+
+        public ApiActionFilterAttribute(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
             base.OnActionExecuting(actionContext);
             var request = actionContext.Request;
             string url = request.RequestUri.AbsoluteUri;
             string requestFormat = "Request Url：{0}";
-            Log4NetHelper.WriteLog(string.Format(requestFormat, url));
+            _logger.WriteLog(string.Format(requestFormat, url));
             //获取url中的参数
             string queryString = request.RequestUri.Query;
         }

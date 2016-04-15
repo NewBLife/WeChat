@@ -1,18 +1,23 @@
 using System.Web.Http.Filters;
+using Aurore.Framework.Core;
 using Aurore.Framework.Web.Core;
-using Aurore.Framework.Web.Mvc;
-using WeChat.Utils;
 
-namespace WeChat.Portal.Filters
+namespace Aurore.Framework.Web.Mvc.Filters
 {
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {
+        private readonly ILogger _logger;
+
+        public ApiExceptionFilterAttribute(ILogger logger)
+        {
+            _logger = logger;
+        }
         public override void OnException(HttpActionExecutedContext filterContext)
         {
-            var exception = filterContext.Exception;
             var bases = filterContext.Request;
-
-            Log4NetHelper.WriteLog("\r\n客户机IP:" + bases.RequestUri.Host + "\r\n错误地址:" + bases.RequestUri.AbsoluteUri + "\r\n异常信息:" + exception.Message, exception);
+            var auroreException = filterContext.Exception as AuroreException;
+            var exception = auroreException ?? new AuroreException(filterContext.Exception);
+            _logger.WriteLog("\r\n客户机IP:" + bases.RequestUri.Host + "\r\n错误地址:" + bases.RequestUri.AbsoluteUri + "\r\n异常信息:" + exception.Message, exception);
 
             var obj = new ResponseEntity<string>()
             {

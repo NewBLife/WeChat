@@ -1,8 +1,8 @@
 using System;
 using System.Xml.Serialization;
+using Aurore.Framework.Utils;
 using WeChat.Core.Constants;
 using WeChat.Core.Entitys;
-using WeChat.Core.Extensions;
 
 namespace WeChat.Core.XmlModels.Response
 {

@@ -242,6 +242,14 @@
     <Content Include="Scripts\jquery-2.2.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Framework\Aurore.Framework.Utils\Aurore.Framework.Utils.csproj">
+      <Project>{D82158D3-DE76-4A08-B26A-E0DBCC60118D}</Project>
+      <Name>Aurore.Framework.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Web\Aurore.Framework.Web.Core\Aurore.Framework.Web.Core.csproj">
+      <Project>{A5F690FB-57DA-4CA0-8F6A-D5101E6986CB}</Project>
+      <Name>Aurore.Framework.Web.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\Web\Aurore.Framework.Web.Mvc\Aurore.Framework.Web.Mvc.csproj">
       <Project>{929A8135-7EDA-44C3-A16D-455281C7F524}</Project>
       <Name>Aurore.Framework.Web.Mvc</Name>

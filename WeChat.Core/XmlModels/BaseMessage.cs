@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
 using System.Xml.Serialization;
-using WeChat.Core.Extensions;
+using Aurore.Framework.Utils;
 using WeChat.Core.XmlModels.Response;
 
 namespace WeChat.Core.XmlModels

@@ -1,6 +1,5 @@
 ﻿using WeChat.Core.XmlModels;
 using WeChat.Core.XmlModels.Request;
-using WeChat.Core.XmlModels.Response;
 
 namespace WeChat.Core
 {

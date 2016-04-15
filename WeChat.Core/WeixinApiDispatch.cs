@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Xml;
+using Aurore.Framework.Utils;
 using WeChat.Core.Constants;
 using WeChat.Core.XmlModels;
 using WeChat.Core.XmlModels.Request;
-using WeChat.Utils;
 
 namespace WeChat.Core
 {

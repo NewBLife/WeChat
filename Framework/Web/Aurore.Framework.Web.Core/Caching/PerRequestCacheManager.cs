@@ -20,7 +20,7 @@ namespace Aurore.Framework.Web.Core.Caching
         /// <param name="context">Context</param>
         public PerRequestCacheManager(HttpContextBase context)
         {
-            this._context = context;
+            _context = context;
         }
         
         /// <summary>
