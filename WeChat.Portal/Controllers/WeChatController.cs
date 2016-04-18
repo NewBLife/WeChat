@@ -18,9 +18,10 @@ namespace WeChat.Portal.Controllers
     public class WeChatController : ApiController
     {
         private readonly ILogger _logger;
-        public WeChatController()
+
+        public WeChatController(ILogger logger)
         {
-            _logger = new Log4NetHelper();
+            _logger = logger;
         }
 
         /// <summary>
