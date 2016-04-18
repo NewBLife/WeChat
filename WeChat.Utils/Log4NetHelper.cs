@@ -10,8 +10,8 @@ namespace WeChat.Utils
     public class Log4NetHelper:ILogger
     {
         //log4net日志专用
-        private static readonly log4net.ILog Loginfo = log4net.LogManager.GetLogger("Loginfo");
-        private static readonly log4net.ILog Logerror = log4net.LogManager.GetLogger("Logerror");
+        public static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
+        public static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
 
         public static void SetConfig()
         {
@@ -23,27 +23,38 @@ namespace WeChat.Utils
             log4net.Config.XmlConfigurator.Configure(configFile);
         }
 
-        public void WriteLog(string msg)
-        {
-            if (Loginfo.IsInfoEnabled)
-            {
-                Loginfo.Info(msg);
-            }
-        }
 
-        public void WriteError( string msg)
+        /// <summary>
+        /// 错误日志
+        /// </summary>
+        /// <param name="msg"></param>
+        public void WriteError(string msg)
         {
-            if (Loginfo.IsInfoEnabled)
-            {
-                Logerror.Error(msg);
-            }
+            WriteError(msg, null);
         }
-
+        /// <summary>
+        /// 错误日志
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="ex"></param>
         public void WriteError(string msg, Exception ex)
         {
-            if (Loginfo.IsInfoEnabled)
+            if (logerror.IsErrorEnabled)
             {
-                Logerror.Error(msg, ex);
+                logerror.Error(msg, ex);
+            }
+        }
+
+        
+        /// <summary>
+        /// 普通的文件记录日志
+        /// </summary>
+        /// <param name="msg"></param>
+        public void WriteLog(string msg)
+        {
+            if (loginfo.IsInfoEnabled)
+            {
+                loginfo.Info(msg);
             }
         }
     }

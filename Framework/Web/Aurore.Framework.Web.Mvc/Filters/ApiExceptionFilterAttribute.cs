@@ -6,18 +6,18 @@ namespace Aurore.Framework.Web.Mvc.Filters
 {
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {
-        //private readonly ILogger _logger;
+        private readonly ILogger _logger;
 
-        //public ApiExceptionFilterAttribute()
-        //{
-        //    _logger = IocManager.Resolve<ILogger>();
-        //}
+        public ApiExceptionFilterAttribute()
+        {
+            _logger = IocManager.Resolve<ILogger>();
+        }
         public override void OnException(HttpActionExecutedContext filterContext)
         {
             var bases = filterContext.Request;
             var auroreException = filterContext.Exception as AuroreException;
             var exception = auroreException ?? new AuroreException(filterContext.Exception);
-            //_logger.WriteError("\r\n客户机IP:" + bases.RequestUri.Host + "\r\n错误地址:" + bases.RequestUri.AbsoluteUri + "\r\n异常信息:" + exception.Message, exception);
+            _logger.WriteError("\r\n客户机IP:" + bases.RequestUri.Host + "\r\n错误地址:" + bases.RequestUri.AbsoluteUri + "\r\n异常信息:" + exception.Message, exception);
 
             var obj = new ResponseEntity<string>()
             {
