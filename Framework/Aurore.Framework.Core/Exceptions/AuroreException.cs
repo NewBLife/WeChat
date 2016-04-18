@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aurore.Framework.Core
+namespace Aurore.Framework.Core.Exceptions
 {
     [Serializable]
     public class AuroreException : Exception

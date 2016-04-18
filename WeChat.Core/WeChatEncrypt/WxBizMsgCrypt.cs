@@ -4,11 +4,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 
+//using System.Web;
+
 //-40001 ： 签名验证错误
 //-40002 :  xml解析失败
 //-40003 :  sha加密生成签名失败
 //-40004 :  AESKey 非法
-//-40005 :  corpid 校验错误
+//-40005 :  appid 校验错误
 //-40006 :  AES 加密失败
 //-40007 ： AES 解密失败
 //-40008 ： 解密后得到的buffer非法
@@ -16,19 +18,19 @@ using System.Xml;
 //-40010 :  base64解密异常
 namespace WeChat.Core.WeChatEncrypt
 {
-    public class WeChatMsgCrypt
+    class WxBizMsgCrypt
     {
-        private readonly string _token;
-        private readonly string _encodingAesKey;
-        private readonly string _corpId;
-        enum WxBizMsgCryptErrorCode
+        string m_sToken;
+        string m_sEncodingAESKey;
+        string m_sAppID;
+        enum WXBizMsgCryptErrorCode
         {
             WXBizMsgCrypt_OK = 0,
             WXBizMsgCrypt_ValidateSignature_Error = -40001,
             WXBizMsgCrypt_ParseXml_Error = -40002,
             WXBizMsgCrypt_ComputeSignature_Error = -40003,
             WXBizMsgCrypt_IllegalAesKey = -40004,
-            WXBizMsgCrypt_ValidateCorpid_Error = -40005,
+            WXBizMsgCrypt_ValidateAppid_Error = -40005,
             WXBizMsgCrypt_EncryptAES_Error = -40006,
             WXBizMsgCrypt_DecryptAES_Error = -40007,
             WXBizMsgCrypt_IllegalBuffer = -40008,
@@ -38,65 +40,28 @@ namespace WeChat.Core.WeChatEncrypt
 
         //构造函数
         // @param sToken: 公众平台上，开发者设置的Token
-        // @param sEncodingAesKey: 公众平台上，开发者设置的EncodingAESKey
-        // @param sCorpId: 企业号的CorpID
-        public WeChatMsgCrypt(string token, string encodingAesKey, string corpId)
+        // @param sEncodingAESKey: 公众平台上，开发者设置的EncodingAESKey
+        // @param sAppID: 公众帐号的appid
+        public WxBizMsgCrypt(string sToken, string sEncodingAESKey, string sAppID)
         {
-            _token = token;
-            _corpId = corpId;
-            _encodingAesKey = encodingAesKey;
+            m_sToken = sToken;
+            m_sAppID = sAppID;
+            m_sEncodingAESKey = sEncodingAESKey;
         }
 
-        //验证URL
-        // @param msgSignature: 签名串，对应URL参数的msg_signature
-        // @param timeStamp: 时间戳，对应URL参数的timestamp
-        // @param nonce: 随机串，对应URL参数的nonce
-        // @param echoStr: 随机串，对应URL参数的echostr
-        // @param replyEchoStr: 解密之后的echostr，当return返回0时有效
-        // @return：成功0，失败返回对应的错误码
-        public int VerifyUrl(string msgSignature, string timeStamp, string nonce, string echoStr, ref string replyEchoStr)
-        {
-            int ret = 0;
-            if (_encodingAesKey.Length != 43)
-            {
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_IllegalAesKey;
-            }
-            ret = VerifySignature(_token, timeStamp, nonce, echoStr, msgSignature);
-            if (0 != ret)
-            {
-                return ret;
-            }
-            replyEchoStr = "";
-            string cpid = "";
-            try
-            {
-                replyEchoStr = Cryptography.AES_decrypt(echoStr, _encodingAesKey, ref cpid); //_corpId);
-            }
-            catch (Exception)
-            {
-                replyEchoStr = "";
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_DecryptAES_Error;
-            }
-            if (cpid != _corpId)
-            {
-                replyEchoStr = "";
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateCorpid_Error;
-            }
-            return 0;
-        }
 
         // 检验消息的真实性，并且获取解密后的明文
-        // @param msgSignature: 签名串，对应URL参数的msg_signature
-        // @param timeStamp: 时间戳，对应URL参数的timestamp
-        // @param nonce: 随机串，对应URL参数的nonce
+        // @param sMsgSignature: 签名串，对应URL参数的msg_signature
+        // @param sTimeStamp: 时间戳，对应URL参数的timestamp
+        // @param sNonce: 随机串，对应URL参数的nonce
         // @param sPostData: 密文，对应POST请求的数据
         // @param sMsg: 解密后的原文，当return返回0时有效
         // @return: 成功0，失败返回对应的错误码
         public int DecryptMsg(string sMsgSignature, string sTimeStamp, string sNonce, string sPostData, ref string sMsg)
         {
-            if (_encodingAesKey.Length != 43)
+            if (m_sEncodingAESKey.Length != 43)
             {
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_IllegalAesKey;
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_IllegalAesKey;
             }
             XmlDocument doc = new XmlDocument();
             XmlNode root;
@@ -109,59 +74,57 @@ namespace WeChat.Core.WeChatEncrypt
             }
             catch (Exception)
             {
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_ParseXml_Error;
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_ParseXml_Error;
             }
             //verify signature
             int ret = 0;
-            ret = VerifySignature(_token, sTimeStamp, sNonce, sEncryptMsg, sMsgSignature);
+            ret = VerifySignature(m_sToken, sTimeStamp, sNonce, sEncryptMsg, sMsgSignature);
             if (ret != 0)
                 return ret;
             //decrypt
             string cpid = "";
             try
             {
-                sMsg = Cryptography.AES_decrypt(sEncryptMsg, _encodingAesKey, ref cpid);
+                sMsg = Cryptography.AES_decrypt(sEncryptMsg, m_sEncodingAESKey, ref cpid);
             }
             catch (FormatException)
             {
-                sMsg = "";
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_DecodeBase64_Error;
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_DecodeBase64_Error;
             }
             catch (Exception)
             {
-                sMsg = "";
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_DecryptAES_Error;
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_DecryptAES_Error;
             }
-            if (cpid != _corpId)
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateCorpid_Error;
+            if (cpid != m_sAppID)
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateAppid_Error;
             return 0;
         }
 
         //将企业号回复用户的消息加密打包
         // @param sReplyMsg: 企业号待回复用户的消息，xml格式的字符串
-        // @param timeStamp: 时间戳，可以自己生成，也可以用URL参数的timestamp
-        // @param nonce: 随机串，可以自己生成，也可以用URL参数的nonce
+        // @param sTimeStamp: 时间戳，可以自己生成，也可以用URL参数的timestamp
+        // @param sNonce: 随机串，可以自己生成，也可以用URL参数的nonce
         // @param sEncryptMsg: 加密后的可以直接回复用户的密文，包括msg_signature, timestamp, nonce, encrypt的xml格式的字符串,
         //						当return返回0时有效
         // return：成功0，失败返回对应的错误码
         public int EncryptMsg(string sReplyMsg, string sTimeStamp, string sNonce, ref string sEncryptMsg)
         {
-            if (_encodingAesKey.Length != 43)
+            if (m_sEncodingAESKey.Length != 43)
             {
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_IllegalAesKey;
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_IllegalAesKey;
             }
             string raw = "";
             try
             {
-                raw = Cryptography.AES_encrypt(sReplyMsg, _encodingAesKey, _corpId);
+                raw = Cryptography.AES_encrypt(sReplyMsg, m_sEncodingAESKey, m_sAppID);
             }
             catch (Exception)
             {
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_EncryptAES_Error;
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_EncryptAES_Error;
             }
             string MsgSigature = "";
             int ret = 0;
-            ret = GenarateSinature(_token, sTimeStamp, sNonce, raw, ref MsgSigature);
+            ret = GenarateSinature(m_sToken, sTimeStamp, sNonce, raw, ref MsgSigature);
             if (0 != ret)
                 return ret;
             sEncryptMsg = "";
@@ -182,7 +145,7 @@ namespace WeChat.Core.WeChatEncrypt
             return 0;
         }
 
-        public class DictionarySort : System.Collections.IComparer
+        public class DictionarySort : IComparer
         {
             public int Compare(object oLeft, object oRight)
             {
@@ -212,11 +175,12 @@ namespace WeChat.Core.WeChatEncrypt
             ret = GenarateSinature(sToken, sTimeStamp, sNonce, sMsgEncrypt, ref hash);
             if (ret != 0)
                 return ret;
+            //System.Console.WriteLine(hash);
             if (hash == sSigture)
                 return 0;
             else
             {
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateSignature_Error;
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateSignature_Error;
             }
         }
 
@@ -248,12 +212,10 @@ namespace WeChat.Core.WeChatEncrypt
             }
             catch (Exception)
             {
-                return (int)WxBizMsgCryptErrorCode.WXBizMsgCrypt_ComputeSignature_Error;
+                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_ComputeSignature_Error;
             }
             sMsgSignature = hash;
             return 0;
         }
     }
-
-
 }

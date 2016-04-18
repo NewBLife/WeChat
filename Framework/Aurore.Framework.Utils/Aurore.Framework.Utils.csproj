@@ -37,6 +37,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
@@ -45,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimeExtension.cs" />
+    <Compile Include="Helpers\DateTimeHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\SerializerHelper.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="XmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

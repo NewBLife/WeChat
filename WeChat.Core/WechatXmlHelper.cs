@@ -3,7 +3,7 @@ using System.Xml;
 using WeChat.Core.Constants;
 using WeChat.Core.WeChatEncrypt;
 using WeChat.Utils;
-
+using AppSetting = WeChat.Utils.AppSetting;
 namespace WeChat.Core
 {
     public static class WeChatXmlHelper
@@ -28,7 +28,7 @@ namespace WeChat.Core
             var node = document.GetNodel("Encrypt");
             if (node == null) throw new Exception("找不到 Encrypt 节点");
 
-            var utils = new WeChatMsgCrypt(AppSetting.Token,AppSetting.EncodingAesKey,AppSetting.AppId);
+            var utils = new WxBizMsgCrypt(AppSetting.Token,AppSetting.EncodingAesKey,AppSetting.AppId);
             //var content = 
             var doc = new XmlDocument();
 

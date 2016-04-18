@@ -10,38 +10,13 @@ namespace Aurore.Framework.Utils
     public static class JsonHelper
     {
         /// <summary>
-        /// 将对象序列化为JSON格式
-        /// </summary>
-        /// <param name="o">对象</param>
-        /// <returns>json字符串</returns>
-        public static string SerializeObject(object o)
-        {
-            string json = JsonConvert.SerializeObject(o);
-            return json;
-        }
-
-        /// <summary>
         /// 生成Json
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public static string ToJson(this object o)
+        public static string ToJson(this object o, JsonSerializerSettings settings = null)
         {
-            return SerializeObject(o);
-        }
-        /// <summary>
-        /// 解析JSON字符串生成对象实体
-        /// </summary>
-        /// <typeparam name="T">对象类型</typeparam>
-        /// <param name="json">json字符串(eg.{"ID":"112","Name":"石子儿"})</param>
-        /// <returns>对象实体</returns>
-        public static T DeserializeJsonToObject<T>(string json) where T : class
-        {
-            JsonSerializer serializer = new JsonSerializer();
-            StringReader sr = new StringReader(json);
-            object o = serializer.Deserialize(new JsonTextReader(sr), typeof(T));
-            T t = o as T;
-            return t;
+            return SerializeObject(o, settings);
         }
 
         /// <summary>
@@ -50,10 +25,39 @@ namespace Aurore.Framework.Utils
         /// <typeparam name="T"></typeparam>
         /// <param name="json"></param>
         /// <returns></returns>
-        public static T DeserializeJson<T>(this string json) where T : class
+        public static T DeserializeJson<T>(this string json)
         {
             return DeserializeJsonToObject<T>(json);
         }
+
+        /// <summary>
+        /// 将对象序列化为JSON格式
+        /// </summary>
+        /// <param name="o">对象</param>
+        /// <returns>json字符串</returns>
+        public static string SerializeObject(object o, JsonSerializerSettings settings = null)
+        {
+            string json = JsonConvert.SerializeObject(o, settings);
+            return json;
+        }
+
+
+        /// <summary>
+        /// 解析JSON字符串生成对象实体
+        /// </summary>
+        /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="json">json字符串(eg.{"ID":"112","Name":"石子儿"})</param>
+        /// <returns>对象实体</returns>
+        public static T DeserializeJsonToObject<T>(string json)
+        {
+            var t = default(T);
+            JsonSerializer serializer = new JsonSerializer();
+            StringReader sr = new StringReader(json);
+            object o = serializer.Deserialize(new JsonTextReader(sr), typeof(T));
+            t = (T)o;
+            return t;
+        }
+
 
         /// <summary>
         /// 解析JSON数组生成对象实体集合
