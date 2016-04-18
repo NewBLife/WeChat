@@ -16,7 +16,6 @@ namespace WeChat.Utils
             string tmpStr = string.Join("", arrTmp);
             tmpStr = Sha1(tmpStr);
             var resultValue = tmpStr.ToLower();
-            var flag = resultValue == signature;
             if (resultValue == signature)
             {
                 return true;
