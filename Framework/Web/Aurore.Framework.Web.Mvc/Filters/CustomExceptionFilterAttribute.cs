@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using Aurore.Framework.Core;
+using Aurore.Framework.Core.Exceptions;
 
 namespace Aurore.Framework.Web.Mvc.Filters
 {

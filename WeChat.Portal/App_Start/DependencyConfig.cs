@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Web.Http;
 using System.Web.Mvc;
 using Aurore.Framework.Core;
 using Autofac;
@@ -16,12 +17,15 @@ namespace WeChat.Portal
         public static void RegisterDependency()
         {
             var builder = new ContainerBuilder();
+            var Configuration = GlobalConfiguration.Configuration;
             RegisterService(builder); //注入
             var allAssembly = Assembly.GetExecutingAssembly();
             builder.RegisterControllers(allAssembly); //注入所有Controller
             builder.RegisterApiControllers(allAssembly);
             var container = builder.Build();
             IocManager.Initialization(new AutofacManager(container));
+
+            Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
         }

@@ -33,8 +33,6 @@ namespace WeChat.Portal.Controllers
         /// <param name="echostr">随机字符串</param>
         /// <returns></returns>
         [HttpGet]
-        [ApiActionFilter]
-        [ApiExceptionFilter]
         public HttpResponseMessage Get(string signature, string timestamp, string nonce, string echostr)
         {
 
@@ -52,7 +50,6 @@ namespace WeChat.Portal.Controllers
         }
 
         [HttpPost]
-        [ApiExceptionFilter]
         public HttpResponseMessage Post()
         {
             string postString;

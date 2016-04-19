@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurore.Framework.Utils", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChat.Data", "WeChat.Data\WeChat.Data.csproj", "{7C0D1860-4017-488C-82F6-3F9B0977A414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurore.Framework.Web.Utils", "Aurore.Framework.Web.Utils\Aurore.Framework.Web.Utils.csproj", "{90AAF708-0FCC-488D-9E71-BB3FDBE7E71F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurore.Framework.Web.Utils", "Framework\Web\Aurore.Framework.Web.Utils\Aurore.Framework.Web.Utils.csproj", "{90AAF708-0FCC-488D-9E71-BB3FDBE7E71F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
