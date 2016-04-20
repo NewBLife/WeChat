@@ -11,6 +11,7 @@
     修改描述：整理接口
 ----------------------------------------------------------------*/
 
+using System;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -28,9 +29,10 @@ namespace Aurore.Framework.Web.Utils.HttpUtility
         /// </summary>
         /// <typeparam name="T">接收JSON的数据类型</typeparam>
         /// <param name="url"></param>
+        /// <param name="callBack"></param>
         /// <param name="encoding"></param>
         /// <returns></returns>
-        public static T GetJson<T>(string url, Encoding encoding = null)
+        public static T GetJson<T>(string url, Action<string> callBack,Encoding encoding = null)
         {
             string returnText = RequestUtility.HttpGet(url, encoding);
 
@@ -38,18 +40,10 @@ namespace Aurore.Framework.Web.Utils.HttpUtility
 
             //JavaScriptSerializer js = new JavaScriptSerializer();
 
-            //if (returnText.Contains("errcode"))
-            //{
-            //    //可能发生错误
-            //    WxJsonResult errorResult = js.Deserialize<WxJsonResult>(returnText);
-            //    if (errorResult.errcode != ReturnCode.请求成功)
-            //    {
-            //        //发生错误
-            //        throw new ErrorJsonResultException(
-            //            string.Format("微信请求发生错误！错误代码：{0}，说明：{1}",
-            //                            (int)errorResult.errcode, errorResult.errmsg), null, errorResult, url);
-            //    }
-            //}
+            if (returnText.Contains("errcode"))
+            {
+                callBack?.Invoke(returnText);
+            }
 
             //T result = js.Deserialize<T>(returnText);
             T result = returnText.DeserializeJson<T>();

@@ -280,6 +280,14 @@
       <Project>{8ec71fc5-e27a-4db8-83e0-69b160746bec}</Project>
       <Name>WeChat.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WeChat.Data\WeChat.Data.csproj">
+      <Project>{7c0d1860-4017-488c-82f6-3f9b0977a414}</Project>
+      <Name>WeChat.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeChat.Services\WeChat.Services.csproj">
+      <Project>{91f1f63b-e796-4cd3-9a37-671a9b85e5af}</Project>
+      <Name>WeChat.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeChat.Utils\WeChat.Utils.csproj">
       <Project>{5587468f-b567-46b7-a965-e7484c50252b}</Project>
       <Name>WeChat.Utils</Name>
@@ -303,7 +311,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61255</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

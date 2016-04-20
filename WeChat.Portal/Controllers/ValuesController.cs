@@ -2,22 +2,25 @@
 using System.Net;
 using System.Web.Http;
 using Aurore.Framework.Core;
+using WeChat.Data.Entitys;
+using WeChat.Services.Interfaces;
 
 namespace WeChat.Portal.Controllers
 {
     public class ValuesController : ApiController
     {
-        //private readonly ILogger _logger;
+        private readonly IUserService _userService;
 
-        //public ValuesController(ILogger logger)
-        //{
-        //    _logger = logger;
-        //}
-        // GET api/values
-        public IEnumerable<string> Get()
+        public ValuesController(IUserService userService)
         {
-            throw new WebException("ex");
-            return new string[] { "value1", "value2" };
+            _userService = userService;
+        }
+
+        // GET api/values
+        public UserEntity Get(string id = "")
+        {
+            var userEntity = _userService.GetUsers(id);
+            return userEntity;
         }
 
         // GET api/values/5

@@ -20,6 +20,7 @@
     修改描述：发起Post请求方法修改，为了上传永久视频素材
 ----------------------------------------------------------------*/
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -37,24 +38,25 @@ namespace Aurore.Framework.Web.Utils.HttpUtility
         /// <typeparam name="T"></typeparam>
         /// <param name="returnText"></param>
         /// <returns></returns>
-        public static T GetResult<T>(string returnText)
+        public static T GetResult<T>(string returnText, Action<string> callBack=null)
         {
             //JavaScriptSerializer js = new JavaScriptSerializer();
 
-            //if (returnText.Contains("errcode"))
-            //{
-            //    //可能发生错误
-            //    WxJsonResult errorResult = js.Deserialize<WxJsonResult>(returnText);
-            //    if (errorResult.errcode != ReturnCode.请求成功)
-            //    {
-            //        //发生错误
-            //        throw new ErrorJsonResultException(
-            //            string.Format("微信Post请求发生错误！错误代码：{0}，说明：{1}",
-            //                          (int)errorResult.errcode,
-            //                          errorResult.errmsg),
-            //            null, errorResult);
-            //    }
-            //}
+            if (returnText.Contains("errcode"))
+            {
+                callBack?.Invoke(returnText);
+                ////可能发生错误
+                //WxJsonResult errorResult = js.Deserialize<WxJsonResult>(returnText);
+                //if (errorResult.errcode != ReturnCode.请求成功)
+                //{
+                //    //发生错误
+                //    throw new ErrorJsonResultException(
+                //        string.Format("微信Post请求发生错误！错误代码：{0}，说明：{1}",
+                //                      (int)errorResult.errcode,
+                //                      errorResult.errmsg),
+                //        null, errorResult);
+                //}
+            }
 
             //T result = js.Deserialize<T>(returnText);
             var result = returnText.DeserializeJson<T>();
@@ -97,13 +99,11 @@ namespace Aurore.Framework.Web.Utils.HttpUtility
         /// <param name="timeOut">代理请求超时时间（毫秒）</param>
         /// <param name="checkValidationResult">验证服务器证书回调自动验证</param>
         /// <returns></returns>
-        public static T PostGetJson<T>(string url, CookieContainer cookieContainer = null, Stream fileStream = null, Encoding encoding = null, int timeOut = 1000, bool checkValidationResult = false)
+        public static T PostGetJson<T>(string url, Action<string> callBack,CookieContainer cookieContainer = null, Stream fileStream = null, Encoding encoding = null, int timeOut = 1000, bool checkValidationResult = false)
         {
             string returnText = RequestUtility.HttpPost(url, cookieContainer, fileStream, null, null, encoding, timeOut: timeOut, checkValidationResult: checkValidationResult);
 
-          
-
-            var result = GetResult<T>(returnText);
+            var result = GetResult<T>(returnText, callBack);
             return result;
         }
 

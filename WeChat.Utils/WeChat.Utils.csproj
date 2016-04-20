@@ -46,13 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSetting.cs" />
+    <Compile Include="Constants\ReturnCode.cs" />
     <Compile Include="Log4NetHelper.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

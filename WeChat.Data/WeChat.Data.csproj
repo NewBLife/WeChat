@@ -41,7 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\CacheKey.cs" />
+    <Compile Include="Constants\RequestUrl.cs" />
     <Compile Include="CurrentSetting.cs" />
+    <Compile Include="Entitys\AccessTokenEntity.cs" />
+    <Compile Include="Entitys\UserData.cs" />
+    <Compile Include="Entitys\UserEntity.cs" />
+    <Compile Include="Entitys\WxJsonResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

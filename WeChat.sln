@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChat.Data", "WeChat.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurore.Framework.Web.Utils", "Framework\Web\Aurore.Framework.Web.Utils\Aurore.Framework.Web.Utils.csproj", "{90AAF708-0FCC-488D-9E71-BB3FDBE7E71F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChat.Services", "WeChat.Services\WeChat.Services.csproj", "{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{90AAF708-0FCC-488D-9E71-BB3FDBE7E71F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90AAF708-0FCC-488D-9E71-BB3FDBE7E71F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90AAF708-0FCC-488D-9E71-BB3FDBE7E71F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
