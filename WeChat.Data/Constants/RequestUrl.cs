@@ -22,6 +22,14 @@
         {
             return string.Format(UsersUrl, token, nextOpenid);
         }
+        private const string UsersByOpenIdUrl =
+            "https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang=zh_CN";
+
+        public static string GetUsersByOpenId(string token, string openid)
+        {
+            return string.Format(UsersByOpenIdUrl, token, openid);
+        }
+         
         private const string UploadTempUrl =
             "https://api.weixin.qq.com/cgi-bin/media/upload?access_token={0}&type={1}";
         /// <summary>

@@ -46,6 +46,7 @@
     <Compile Include="CurrentSetting.cs" />
     <Compile Include="Entitys\AccessTokenEntity.cs" />
     <Compile Include="Entitys\UserData.cs" />
+    <Compile Include="Entitys\UserDetailEntity.cs" />
     <Compile Include="Entitys\UserEntity.cs" />
     <Compile Include="Entitys\WxJsonResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

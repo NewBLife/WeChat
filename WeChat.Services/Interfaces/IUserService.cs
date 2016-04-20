@@ -6,6 +6,9 @@ namespace WeChat.Services.Interfaces
     {
         string AddUser();
 
+
+        UserDetailEntity GetUser(string openId);
+
         UserEntity GetUsers(string nextOpenid);
     }
 }

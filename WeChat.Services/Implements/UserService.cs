@@ -16,6 +16,12 @@ namespace WeChat.Services.Implements
             throw new System.NotImplementedException();
         }
 
+        public UserDetailEntity GetUser(string openId)
+        {
+            var url = RequestUrl.GetUsersByOpenId(this.Token, openId);
+            return GetJson<UserDetailEntity>(url);
+        }
+
         public UserEntity GetUsers(string nextOpenid)
         {
             var url = RequestUrl.GetUsers(this.Token,nextOpenid);

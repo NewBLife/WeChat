@@ -9,24 +9,18 @@ namespace WeChat.Portal.Controllers
 {
     public class ValuesController : ApiController
     {
-        private readonly IUserService _userService;
 
-        public ValuesController(IUserService userService)
-        {
-            _userService = userService;
-        }
 
         // GET api/values
-        public UserEntity Get(string id = "")
+        public IEnumerable<string> Get()
         {
-            var userEntity = _userService.GetUsers(id);
-            return userEntity;
+
+            return new[] { "Value1", "Value2" };
         }
 
         // GET api/values/5
         public string Get(int id)
         {
-            throw new HttpResponseException(HttpStatusCode.Forbidden);
             return "value";
         }
 
