@@ -3,7 +3,7 @@ using System.Xml;
 using WeChat.Core.Constants;
 using WeChat.Core.WeChatEncrypt;
 using WeChat.Utils;
-using AppSetting = WeChat.Utils.AppSetting;
+
 namespace WeChat.Core
 {
     public static class WeChatXmlHelper
@@ -15,6 +15,12 @@ namespace WeChat.Core
                 throw new ArgumentException("Argument is null or whitespace", nameof(context));
             var doc = new XmlDocument();
             doc.LoadXml(context);
+            return Execute(doc);
+        }
+
+
+        public static XmlDocument Execute(XmlDocument doc)
+        {
             if (AppSetting.Encrypt)
             {
                 doc = EncryptDocument(doc);

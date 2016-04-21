@@ -40,9 +40,8 @@ namespace WeChat.Portal
 
             var allServices =
                 assemblys.SelectMany(m => m.GetTypes()).Where(m => baseType.IsAssignableFrom(m) && m != baseType);
-            var allAssembly = Assembly.GetExecutingAssembly();
-            builder.Register(c => new Log4NetHelper())
-                .As<ILogger>();
+            //var allAssembly = Assembly.GetExecutingAssembly();
+            builder.RegisterInstance(new Log4NetHelper()).As<ILogger>();
             builder.RegisterInstance<ICacheManager>(new CacheManager());
             //// Scan an assembly for components
             builder.RegisterAssemblyTypes(assemblys.ToArray())

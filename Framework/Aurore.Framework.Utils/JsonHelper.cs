@@ -13,6 +13,7 @@ namespace Aurore.Framework.Utils
         /// 生成Json
         /// </summary>
         /// <param name="o"></param>
+        /// <param name="settings"></param>
         /// <returns></returns>
         public static string ToJson(this object o, JsonSerializerSettings settings = null)
         {

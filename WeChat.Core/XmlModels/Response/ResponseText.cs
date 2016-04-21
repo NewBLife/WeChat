@@ -38,7 +38,7 @@ namespace WeChat.Core.XmlModels.Response
         public string Content { get; set; }
         public override string ToXml()
         {
-            this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
+            this.CreateTime = DateTime.Now.ConvertToInt();//重新更新
             return this.SerializerToXml();
         }
     }

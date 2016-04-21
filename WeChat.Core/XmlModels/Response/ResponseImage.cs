@@ -21,7 +21,7 @@ namespace WeChat.Core.XmlModels.Response
         public ImageEntity Image { get; set; }
         public override string ToXml()
         {
-            CreateTime = DateTime.Now.DateTimeToInt();//重新更新
+            CreateTime = DateTime.Now.ConvertToInt();//重新更新
             return this.SerializerToXml();
         }
     }

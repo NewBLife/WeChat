@@ -52,14 +52,16 @@ namespace WeChat.Portal.Controllers
         [HttpPost]
         public HttpResponseMessage Post()
         {
-            string postString;
-            using (Stream stream = HttpContext.Current.Request.InputStream)
-            {
-                Byte[] postBytes = new Byte[stream.Length];
-                stream.Read(postBytes, 0, (Int32)stream.Length);
-                postString = Encoding.UTF8.GetString(postBytes);
-            }
-            var document = WeChatXmlHelper.Execute(postString);
+            //string postString;
+            //using (Stream stream = HttpContext.Current.Request.InputStream)
+            //{
+            //    Byte[] postBytes = new Byte[stream.Length];
+            //    stream.Read(postBytes, 0, (Int32)stream.Length);
+            //    postString = Encoding.UTF8.GetString(postBytes);
+            //}
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(HttpContext.Current.Request.InputStream);
+            var document = WeChatXmlHelper.Execute(xmlDoc);
             _logger.WriteLog(document.ConvertToString());
             BaseMessage response= Execute(document);
             var responseMessage =

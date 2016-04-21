@@ -25,7 +25,7 @@ namespace WeChat.Core.XmlModels
         /// </summary>
         public BaseMessage()
         {
-            this.CreateTime = DateTime.Now.DateTimeToInt();
+            this.CreateTime = DateTime.Now.ConvertToInt();
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace WeChat.Core.XmlModels
 
         public virtual string ToXml()
         {
-            this.CreateTime = DateTime.Now.DateTimeToInt();//重新更新
+            this.CreateTime = DateTime.Now.ConvertToInt();//重新更新
             return this.SerializerToXml();
         }
 

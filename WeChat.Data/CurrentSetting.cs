@@ -9,6 +9,6 @@ namespace WeChat.Data
 {
     public static class CurrentSetting
     {
-        public static string DbConnection = AppSetting.ConnenctionString("WeChatDb");
+        public static string DbConnection = ConfigSetting.ConnenctionString("WeChatDb");
     }
 }

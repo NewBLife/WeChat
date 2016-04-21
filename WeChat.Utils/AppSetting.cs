@@ -1,6 +1,8 @@
-﻿namespace WeChat.Utils
+﻿using Aurore.Framework.Core;
+
+namespace WeChat.Utils
 {
-    public class AppSetting: Aurore.Framework.Core.AppSetting
+    public class AppSetting: ConfigSetting
     {
         private const string TokenKey = "Token";
         private const string AppIdKey = "AppId";

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RequestHeadEntity.cs" />
     <Compile Include="WeChatEncrypt\WxBizMsgCrypt.cs" />
     <Compile Include="WeChatEncrypt\Cryptography.cs" />
     <Compile Include="WechatXmlHelper.cs" />
