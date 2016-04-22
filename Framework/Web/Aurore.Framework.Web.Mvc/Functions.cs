@@ -9,7 +9,7 @@ namespace Aurore.Framework.Web.Mvc
         public static HttpResponseMessage XmlResponse(this object response)
         {
 
-            var contenxt = response.SerializerToXml();
+            var contenxt = response.ToXml().ToString();
             var responseMessage =
               new HttpResponseMessage { Content = new StringContent(contenxt, Encoding.GetEncoding("UTF-8"), "application/xml") };
             return responseMessage;
