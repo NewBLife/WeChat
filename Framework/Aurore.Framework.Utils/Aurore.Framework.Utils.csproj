@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="XmlHelpers.cs" />
     <Compile Include="FileHelper.cs" />
     <Compile Include="StreamUtility.cs" />
     <Compile Include="DateTimeHelper.cs" />

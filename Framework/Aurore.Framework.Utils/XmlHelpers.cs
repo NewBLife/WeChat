@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace ConsoleApplication1
+namespace Aurore.Framework.Utils
 {
     public static class XmlHelpers
     {
@@ -37,7 +37,7 @@ namespace ConsoleApplication1
             return input.ToXml(allowNull, "xml");
         }
 
-        public static object ToXml(this object input, bool allowNull, string elementName, string childName="item")
+        public static object ToXml(this object input, bool allowNull, string elementName, string childName = "item")
         {
 
             elementName = XmlConvert.EncodeName(elementName);
@@ -47,7 +47,7 @@ namespace ConsoleApplication1
                 elementName = type.GetTypeName(elementName);
                 if (input is IEnumerable && !type.IsSimpleType())
                 {
-                   object elements;
+                    object elements;
                     if (input is IEnumerable<object>)
                     {
                         elements = (input as IEnumerable<object>)
@@ -78,7 +78,7 @@ namespace ConsoleApplication1
                                    let val = prop.GetValue(input, null)
                                    let value = prop.PropertyType.IsSimpleType()
                                        ? CreateElement(prop.PropertyType, name, val)//new XElement(name, val)
-                                       : val.ToXml(allowNull, prop.GetTypeName(name),prop.GetTypeItemName(name))
+                                       : val.ToXml(allowNull, prop.GetTypeName(name), prop.GetTypeItemName(name))
                                    where value != null
                                    select value;
 
