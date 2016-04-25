@@ -33,6 +33,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChat.Services", "WeChat.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{7DFC1E74-7D76-4800-AC4C-ACFBB8219ED2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions", "Solutions", "{0693A0B4-8540-4143-BB5B-2C75694C663D}"
+	ProjectSection(SolutionItems) = preProject
+		Solutions\Db.Sql = Solutions\Db.Sql
+		Solutions\WeChat.pdb = Solutions\WeChat.pdb
+		Solutions\WeChat.pdm = Solutions\WeChat.pdm
+		Solutions\无标题.png = Solutions\无标题.png
+		Solutions\燕舒数据设计.rtf = Solutions\燕舒数据设计.rtf
+		Solutions\计算器输入.pdf = Solutions\计算器输入.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
