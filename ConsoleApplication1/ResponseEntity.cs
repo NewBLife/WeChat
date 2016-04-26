@@ -2,7 +2,7 @@
 
 namespace ConsoleApplication1
 {
-    [XmlRoot(ElementName = "root")]
+    [XmlRoot(ElementName = "xml")]
     public class ResponseEntity<T>
     {
         public string ErrorCode { get; set; }

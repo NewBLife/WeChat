@@ -70,15 +70,15 @@ namespace Aurore.Framework.Utils
                 }
                 else
                 {
-                    //element = type.GetTypeName(type.Name);
                     var ret = new XElement(elementName);
                     var props = type.GetProperties();
                     var elements = from prop in props
                                    let name = XmlConvert.EncodeName(prop.Name)
                                    let val = prop.GetValue(input, null)
                                    let value = prop.PropertyType.IsSimpleType()
-                                       ? CreateElement(prop.PropertyType, name, val)//new XElement(name, val)
-                                       : val.ToXml(allowNull, prop.GetTypeName(name), prop.GetTypeItemName(name))
+                                       ? CreateElement(prop.PropertyType, name, val)
+                                       : val.ToXml(allowNull, prop.GetElementName(name), 
+                                       prop.GetElementItemName(name))
                                    where value != null
                                    select value;
 
@@ -86,21 +86,11 @@ namespace Aurore.Framework.Utils
                     return ret;
                 }
             }
-            else
+            if (allowNull)
             {
-                if (allowNull)
-                {
-                    return new XElement(elementName); ;
-                }
-                else
-                {
-                    return null;
-                }
-
+                return new XElement(elementName); ;
             }
-
-
-
+            return null;
         }
 
 
@@ -116,13 +106,13 @@ namespace Aurore.Framework.Utils
         }
 
 
-        private static string GetTypeItemName(this PropertyInfo type, string name)
+        private static string GetElementItemName(this PropertyInfo type, string name)
         {
             var attribute = type.GetCustomAttributes<XmlArrayItemAttribute>().FirstOrDefault();
             return attribute == null ? name : attribute.ElementName;
         }
 
-        private static string GetTypeName(this PropertyInfo type, string name)
+        private static string GetElementName(this PropertyInfo type, string name)
         {
             var attribute = type.GetCustomAttributes<XmlElementAttribute>().FirstOrDefault();
             return attribute == null ? name : attribute.ElementName;
