@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using Aurore.Framework.Core;
 using Aurore.Framework.Utils;
 using Aurore.Framework.Web.Mvc;
 using ConsoleApplication1;
+using WeChat.Core.XmlModels.Request;
+using WeChat.Core.XmlModels.Response;
 using WeChat.Data.Entitys;
 using WeChat.Services.Interfaces;
 
@@ -55,9 +58,15 @@ namespace WeChat.Portal.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return "value";
+            var info = new RequestEvent(){ToUserName = "gh_1769d357444d",FromUserName = "opKrYwas6Lx4_qRK9s9-NHLV-izo",CreateTime = 1461496547 ,MsgType = "event" ,Event = "CLICK",EventKey = "aboutUs"};
+            var msg = "你发送了文本【{0}】";
+            var response = new ResponseText(info)
+            {
+                Content = string.Format(msg,"OK")
+            };
+            return response.XmlResponse();
         }
 
         // POST api/values

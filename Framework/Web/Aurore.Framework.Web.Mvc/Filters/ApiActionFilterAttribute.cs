@@ -23,14 +23,7 @@ namespace Aurore.Framework.Web.Mvc.Filters
             var request = actionContext.Request;
             string url = request.RequestUri.AbsoluteUri;
             string queryString = request.RequestUri.Query;
-            //string postBody;
-            //using (var stream = HttpContext.Current.Request.InputStream)
-            //{
-            //    Byte[] postBytes = new Byte[stream.Length];
-            //    stream.Read(postBytes, 0, (Int32)stream.Length);
-            //    postBody = Encoding.UTF8.GetString(postBytes);
-            //}
-            string requestFormat = "Request Url：{0},Query;{1}";
+            string requestFormat = "Request Url：\r\n{0},Query;{1}";
             _logger.WriteLog(string.Format(requestFormat, url, queryString));
         }
 

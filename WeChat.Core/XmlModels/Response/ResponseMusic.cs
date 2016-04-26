@@ -22,10 +22,10 @@ namespace WeChat.Core.XmlModels.Response
 
         public MusicEntity Music { get; set; }
 
-        public override string ToXml()
-        {
-            this.CreateTime = DateTime.Now.ConvertToInt();//重新更新
-            return this.SerializerToXml();
-        }
+        //public override string ToXml()
+        //{
+        //    this.CreateTime = DateTime.Now.ConvertToInt();//重新更新
+        //    return this.SerializerToXml();
+        //}
     }
 }

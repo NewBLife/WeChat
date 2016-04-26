@@ -23,23 +23,23 @@ namespace WeChat.Core.XmlModels.Response
             this.FromUserName = info.ToUserName;
             this.ToUserName = info.FromUserName;
         }
-        [XmlElement("Content")]
-        public XmlCDataSection XmlContent
-        {
-            get { return new XmlDataDocument().CreateCDataSection(Content); }
-            set { Content = value.Value; }
-        }
+        //[XmlElement("Content")]
+        //public XmlCDataSection XmlContent
+        //{
+        //    get { return new XmlDataDocument().CreateCDataSection(Content); }
+        //    set { Content = value.Value; }
+        //}
 
 
         /// <summary>
         /// 内容
         /// </summary>    
-        [XmlIgnore]
+        //[XmlIgnore]
         public string Content { get; set; }
-        public override string ToXml()
-        {
-            this.CreateTime = DateTime.Now.ConvertToInt();//重新更新
-            return this.SerializerToXml();
-        }
+        //public override string ToXml()
+        //{
+        //    this.CreateTime = DateTime.Now.ConvertToInt();//重新更新
+        //    return this.SerializerToXml();
+        //}
     }
 }

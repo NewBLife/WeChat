@@ -31,27 +31,27 @@ namespace WeChat.Core.XmlModels
         /// <summary>
         /// 开发者微信号
         /// </summary>
-        [XmlElement("ToUserName")]
-        public XmlCDataSection XmlToUserName
-        {
-            get { return new XmlDataDocument().CreateCDataSection(ToUserName); }
-            set { ToUserName = value.Value; }
-        }
+        //[XmlElement("ToUserName")]
+        //public XmlCDataSection XmlToUserName
+        //{
+        //    get { return new XmlDataDocument().CreateCDataSection(ToUserName); }
+        //    set { ToUserName = value.Value; }
+        //}
 
-        [XmlIgnore]
+        //[XmlIgnore]
         public string ToUserName { get; set; }
 
 
-        [XmlElement("FromUserName")]
-        public XmlCDataSection XmlFromUserName
-        {
-            get { return new XmlDataDocument().CreateCDataSection(FromUserName); }
-            set { FromUserName = value.Value; }
-        }
+        //[XmlElement("FromUserName")]
+        //public XmlCDataSection XmlFromUserName
+        //{
+        //    get { return new XmlDataDocument().CreateCDataSection(FromUserName); }
+        //    set { FromUserName = value.Value; }
+        //}
         /// <summary>
         /// 发送方帐号（一个OpenID）
         /// </summary>
-        [XmlIgnore]
+        //[XmlIgnore]
         public string FromUserName { get; set; }
 
         /// <summary>
@@ -59,23 +59,23 @@ namespace WeChat.Core.XmlModels
         /// </summary>
         public long CreateTime { get; set; }
 
-        [XmlElement("MsgType")]
-        public XmlCDataSection XmlMsgType
-        {
-            get { return new XmlDataDocument().CreateCDataSection(MsgType); }
-            set { MsgType = value.Value; }
-        }
+        //[XmlElement("MsgType")]
+        //public XmlCDataSection XmlMsgType
+        //{
+        //    get { return new XmlDataDocument().CreateCDataSection(MsgType); }
+        //    set { MsgType = value.Value; }
+        //}
         /// <summary>
         /// 消息类型
         /// </summary>
-        [XmlIgnore]
+        //[XmlIgnore]
         public string MsgType { get; set; }
 
-        public virtual string ToXml()
-        {
-            this.CreateTime = DateTime.Now.ConvertToInt();//重新更新
-            return this.SerializerToXml();
-        }
+        //public virtual string ToXml()
+        //{
+        //    this.CreateTime = DateTime.Now.ConvertToInt();//重新更新
+        //    return this.SerializerToXml();
+        //}
 
     }
 }

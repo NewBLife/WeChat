@@ -15,7 +15,6 @@ namespace WeChat.Portal.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-            _logger.WriteLog("Home");
             return View();
         }
     }
