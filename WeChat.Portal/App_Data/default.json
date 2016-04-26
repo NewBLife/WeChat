@@ -1,47 +1,58 @@
 ﻿{
   "button": [
     {
-      "name": "关于燕枢宝",
+      "name": "产品介绍",
       "sub_button": [
         {
           "type": "click",
-          "name": "企业简介",
-          "key": "aboutUs"
+          "name": "保誠++雋陞儲蓄保障計劃EGS",
+          "key": "BCEGS"
         },
         {
           "type": "click",
-          "name": "联系我们",
-          "key": "contactUs"
+          "name": "保诚+危疾终身保CCL3",
+          "key": "BCCCL3"
+        },
+        {
+          "type": "click",
+          "name": "AIA+進泰安心保PCP",
+          "key": "AIAPCP"
+        },
+        {
+          "type": "click",
+          "name": "AIA+充裕未來計劃BP",
+          "key": "AIABP"
+        }
+
+      ]
+    },
+    {
+      "name": "我要办理",
+      "sub_button": [
+        {
+          "type": "view",
+          "name": "计划书",
+          "url": "http://51yanshu.8866.org/Plan/Create"
+        },
+        {
+          "type": "click",
+          "name": "预约签单",
+           "key": "Appointment"
         }
       ]
     },
     {
-      "name": "产品",
-      "sub_button": [
-        {
-          "type": "view",
-          "name": "搜索",
-          "url": "http://www.soso.com/"
-        },
-        {
-          "type": "view",
-          "name": "视频",
-          "url": "http://v.qq.com/"
-        }
-      ]
-    },
-    {
-      "name": "会员中心",
+      "name": "我的",
       "sub_button": [
         {
           "type": "view",
           "name": "我的订单",
-          "url": "http://www.soso.com/"
+          "url": "http://51yanshu.8866.org/Order"
         },
         {
-          "type": "click",
-          "name": "进度查询",
-          "key": "stepQuery"
+           "type": "view",
+          "name": "我的计划书",
+          "url": "http://51yanshu.8866.org/Plan"
         }
       ]
     }
