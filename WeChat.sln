@@ -31,8 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurore.Framework.Web.Utils"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChat.Services", "WeChat.Services\WeChat.Services.csproj", "{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{7DFC1E74-7D76-4800-AC4C-ACFBB8219ED2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions", "Solutions", "{0693A0B4-8540-4143-BB5B-2C75694C663D}"
 	ProjectSection(SolutionItems) = preProject
 		Solutions\Db.Sql = Solutions\Db.Sql
@@ -93,10 +91,6 @@ Global
 		{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91F1F63B-E796-4CD3-9A37-671A9B85E5AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DFC1E74-7D76-4800-AC4C-ACFBB8219ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DFC1E74-7D76-4800-AC4C-ACFBB8219ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DFC1E74-7D76-4800-AC4C-ACFBB8219ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DFC1E74-7D76-4800-AC4C-ACFBB8219ED2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
