@@ -1,4 +1,6 @@
-﻿using WeChat.Core;
+﻿using System;
+using WeChat.Core;
+using WeChat.Core.Constants;
 using WeChat.Core.Entitys;
 using WeChat.Core.XmlModels;
 using WeChat.Core.XmlModels.Request;
@@ -9,12 +11,19 @@ namespace WeChat.Services.Implements
 {
     public class WeixinActionService : IWeixinActionService
     {
+        private readonly IEventService _eventService;
+        private const string Msg = "我不明白您在做做什么.";
+        public WeixinActionService(IEventService eventService)
+        {
+            _eventService = eventService;
+        }
+
         public BaseMessage HandleText(RequestText info)
         {
-            var msg = "你发送了文本【{0}】";
+
             var response = new ResponseText(info)
             {
-                Content = string.Format(msg, info.Content)
+                Content = Msg
             };
             return response;
 
@@ -22,18 +31,20 @@ namespace WeChat.Services.Implements
 
         public BaseMessage HandleImage(RequestImage info)
         {
-            var response = new ResponseImage(info)
+
+            var response = new ResponseText(info)
             {
-                Image = new ImageEntity() { MediaId = info.MediaId }
+                Content = Msg
             };
             return response;
 
         }
         public BaseMessage HandleVoice(RequestVoice info)
         {
-            var response = new ResponseVoice(info)
+
+            var response = new ResponseText(info)
             {
-                Voice = new VoiceEntity() { MediaId = info.MediaId }
+                Content = Msg
             };
             return response;
 
@@ -41,49 +52,72 @@ namespace WeChat.Services.Implements
 
         public BaseMessage HandleVideo(RequestVideo info)
         {
-            var msg = "你发送了 Video 【{0}】";
+
             var response = new ResponseText(info)
             {
-                Content = string.Format(msg,info.MediaId)
+                Content = Msg
             };
             return response;
         }
 
         public BaseMessage HandleShortVideo(RequestVideo info)
         {
-            var msg = "你发送了 ShortVideo 【{0}】";
+
             var response = new ResponseText(info)
             {
-                Content = string.Format(msg,info.MediaId)
+                Content = Msg
             };
             return response;
         }
 
         public BaseMessage HandleLocation(RequestLocation info)
         {
-            var msg = "你发送了 Location【{0}】";
+
             var response = new ResponseText(info)
             {
-                Content = string.Format(msg, info.Label)
-            }; return response;
+                Content = Msg
+            };
+            return response;
         }
 
         public BaseMessage HandleLink(RequestLink info)
         {
-            var msg = "你发送了 Link 【{0}】";
+
             var response = new ResponseText(info)
             {
-                Content = string.Format(msg, info.Title+" "+info.Description+" "+info.Url)
-            }; return response;
+                Content = Msg
+            };
+            return response;
         }
 
         public BaseMessage HandleEventClick(RequestEvent info)
         {
-            var msg = "你发送了 Event【{0}】";
+
+            EventType eventType = (EventType)Enum.Parse(typeof(EventType), info.Event,true);
+            switch (eventType)
+            {
+                case EventType.Subscribe:
+                    break;
+                case EventType.Unsubscribe:
+                    break;
+                case EventType.Scan:
+                    break;
+                case EventType.Location:
+                    break;
+                case EventType.Click:
+                    return _eventService.ClickEvent(info);
+                    break;
+                case EventType.View:
+                    break;
+                default:
+                    break;
+            }
             var response = new ResponseText(info)
             {
-                Content = string.Format(msg, info.Event)
-            }; return response;
+                Content = Msg
+            };
+
+            return response;
         }
     }
 }

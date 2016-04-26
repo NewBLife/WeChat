@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implements\BaseService.cs" />
+    <Compile Include="Implements\EventService.cs" />
     <Compile Include="Implements\UserService.cs" />
     <Compile Include="Implements\WeChatService.cs" />
+    <Compile Include="Interfaces\IEventService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWeChatService.cs" />
     <Compile Include="Interfaces\IWeixinActionService.cs" />
