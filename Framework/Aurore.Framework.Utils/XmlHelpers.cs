@@ -34,17 +34,17 @@ namespace Aurore.Framework.Utils
 
         public static object ToXml(this object input, bool allowNull = false)
         {
-            return input.ToXml(allowNull, "xml");
+            var type = input.GetType();
+            var rootName = type.GetTypeName("xml");
+            return input.ToXml(allowNull, rootName);
         }
 
         public static object ToXml(this object input, bool allowNull, string elementName, string childName = "item")
         {
-
             elementName = XmlConvert.EncodeName(elementName);
             if (input != null)
             {
                 var type = input.GetType();
-                elementName = type.GetTypeName(elementName);
                 if (input is IEnumerable && !type.IsSimpleType())
                 {
                     object elements;

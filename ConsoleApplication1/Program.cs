@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Aurore.Framework.Utils;
 
 namespace ConsoleApplication1
 {

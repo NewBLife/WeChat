@@ -48,10 +48,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseEntity.cs" />
     <Compile Include="Student.cs" />
-    <Compile Include="XmlHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Aurore.Framework.Utils\Aurore.Framework.Utils.csproj">
+      <Project>{d82158d3-de76-4a08-b26a-e0dbcc60118d}</Project>
+      <Name>Aurore.Framework.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
