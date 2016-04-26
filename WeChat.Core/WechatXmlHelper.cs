@@ -9,26 +9,26 @@ namespace WeChat.Core
     public static class WeChatXmlHelper
     {
 
-        public static XmlDocument Execute(string context)
+        public static XmlDocument Execute(string context,RequesEntity request)
         {
             if (string.IsNullOrWhiteSpace(context))
                 throw new ArgumentException("Argument is null or whitespace", nameof(context));
             var doc = new XmlDocument();
             doc.LoadXml(context);
-            return Execute(doc);
+            return Execute(doc, request);
         }
 
 
-        public static XmlDocument Execute(XmlDocument doc)
+        public static XmlDocument Execute(XmlDocument doc,RequesEntity request)
         {
             if (AppSetting.Encrypt)
             {
-                doc = EncryptDocument(doc);
+                doc = EncryptDocument(doc, request);
             }
             return doc;
         }
 
-        public static XmlDocument EncryptDocument(XmlDocument document)
+        public static XmlDocument EncryptDocument(XmlDocument document,RequesEntity request)
         {
             if (document == null) throw new ArgumentNullException(nameof(document));
             var node = document.GetNodel("Encrypt");
@@ -50,7 +50,7 @@ namespace WeChat.Core
             if (document == null) throw new ArgumentNullException(nameof(document));
             XmlElement root = document.DocumentElement;
             if (root == null) throw new ArgumentNullException(nameof(root));
-            XmlNode node = root.SelectSingleNode(nodeName);//读取Students节点
+            XmlNode node = root.SelectSingleNode(nodeName);
             return node;
         }
 

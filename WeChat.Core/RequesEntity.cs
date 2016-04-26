@@ -1,6 +1,6 @@
 ﻿namespace WeChat.Core
 {
-    public class RequestHeadEntity
+    public class RequesEntity
     {
         public string signature { get; set; }
         public string timestamp { get; set; }

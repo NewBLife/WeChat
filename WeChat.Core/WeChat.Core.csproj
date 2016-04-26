@@ -45,19 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RequestHeadEntity.cs" />
+    <Compile Include="RequesEntity.cs" />
     <Compile Include="WeChatEncrypt\WxBizMsgCrypt.cs" />
     <Compile Include="WeChatEncrypt\Cryptography.cs" />
-    <Compile Include="WechatXmlHelper.cs" />
-    <Compile Include="WeixinAction.cs" />
+    <Compile Include="WeChatXmlHelper.cs" />
     <Compile Include="Constants\MsgType.cs" />
     <Compile Include="Entitys\ArticleEntity.cs" />
     <Compile Include="Entitys\MusicEntity.cs" />
     <Compile Include="Entitys\VideoEntity.cs" />
     <Compile Include="Entitys\VoiceEntity.cs" />
-    <Compile Include="IWeixinAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WeixinApiDispatch.cs" />
     <Compile Include="XmlModels\Request\RequestEvent.cs" />
     <Compile Include="XmlModels\BaseMessage.cs" />
     <Compile Include="XmlModels\EncryptMessage.cs" />

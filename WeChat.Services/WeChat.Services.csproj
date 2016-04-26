@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="Implements\BaseService.cs" />
     <Compile Include="Implements\UserService.cs" />
+    <Compile Include="Implements\WeChatService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\IWeChatService.cs" />
+    <Compile Include="Interfaces\IWeixinActionService.cs" />
+    <Compile Include="Implements\WeixinActionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +66,10 @@
     <ProjectReference Include="..\Framework\Web\Aurore.Framework.Web.Utils\Aurore.Framework.Web.Utils.csproj">
       <Project>{90aaf708-0fcc-488d-9e71-bb3fdbe7e71f}</Project>
       <Name>Aurore.Framework.Web.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeChat.Core\WeChat.Core.csproj">
+      <Project>{8ec71fc5-e27a-4db8-83e0-69b160746bec}</Project>
+      <Name>WeChat.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\WeChat.Data\WeChat.Data.csproj">
       <Project>{7c0d1860-4017-488c-82f6-3f9b0977a414}</Project>
