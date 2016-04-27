@@ -46,7 +46,7 @@ namespace WeChat.Portal
             //// Scan an assembly for components
             builder.RegisterAssemblyTypes(assemblys.ToArray())
                    .Where(t => t.Name.EndsWith("Service"))
-                   .AsImplementedInterfaces().InstancePerLifetimeScope();
+                   .AsImplementedInterfaces();
         }
     }
 }
