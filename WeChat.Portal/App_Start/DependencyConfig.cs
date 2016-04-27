@@ -12,7 +12,7 @@ using Autofac.Integration.WebApi;
 using WeChat.Portal.Controllers;
 using WeChat.Services.Implements;
 using WeChat.Utils;
-using Log4NetHelper = Aurore.Framework.Core.Log4NetHelper;
+using Log4NetHelper = WeChat.Utils.Log4NetHelper;
 
 namespace WeChat.Portal
 {

@@ -11,7 +11,7 @@ namespace Aurore.Framework.Web.Mvc.Filters
 
         public ApiExceptionFilterAttribute()
         {
-            _logger = new Log4NetHelper();
+            _logger = IocManager.Resolve<ILogger>();
         }
         public override void OnException(HttpActionExecutedContext filterContext)
         {

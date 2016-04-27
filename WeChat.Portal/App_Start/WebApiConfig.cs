@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using Aurore.Framework.Web.Mvc.Filters;
+using WeChat.Portal.Filters;
 
 namespace WeChat.Portal
 {
@@ -17,7 +18,7 @@ namespace WeChat.Portal
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Filters.Add(new ApiExceptionFilterAttribute());
+            config.Filters.Add(new ElmahErrorAttribute());
             config.Filters.Add(new ApiActionFilterAttribute());
          
         }

@@ -44,6 +44,7 @@
     <Compile Include="AppSetting.cs" />
     <Compile Include="Constants\ReturnCode.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Log4NetHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
