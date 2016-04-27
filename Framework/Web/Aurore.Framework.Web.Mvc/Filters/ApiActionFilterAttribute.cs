@@ -14,7 +14,7 @@ namespace Aurore.Framework.Web.Mvc.Filters
 
         public ApiActionFilterAttribute()
         {
-            _logger = IocManager.Resolve<ILogger>();
+            _logger = new Log4NetHelper();
         }
 
         public override void OnActionExecuting(HttpActionContext actionContext)
