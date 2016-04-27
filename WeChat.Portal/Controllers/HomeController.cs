@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Aurore.Framework.Core;
 
 namespace WeChat.Portal.Controllers
