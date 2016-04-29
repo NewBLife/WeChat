@@ -11,7 +11,7 @@ namespace Aurore.Framework.Web.Mvc.Filters
 
         public CustomExceptionFilterAttribute()
         {
-            _logger = IocManager.Resolve<ILogger>();
+            _logger = DependencyResolver.Current.GetService<ILogger>();
         }
 
         public void OnException(ExceptionContext filterContext)

@@ -4,7 +4,9 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using System.Web.Mvc;
 using Aurore.Framework.Core;
+using ActionFilterAttribute = System.Web.Http.Filters.ActionFilterAttribute;
 
 namespace Aurore.Framework.Web.Mvc.Filters
 {
@@ -14,7 +16,7 @@ namespace Aurore.Framework.Web.Mvc.Filters
 
         public ApiActionFilterAttribute()
         {
-            _logger = IocManager.Resolve<ILogger>();
+            _logger = DependencyResolver.Current.GetService<ILogger>();
         }
 
         public override void OnActionExecuting(HttpActionContext actionContext)

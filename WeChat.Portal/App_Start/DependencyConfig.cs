@@ -9,10 +9,7 @@ using Aurore.Framework.Web.Core.Caching;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
-using WeChat.Portal.Controllers;
-using WeChat.Services.Implements;
 using WeChat.Utils;
-using Log4NetHelper = WeChat.Utils.Log4NetHelper;
 
 namespace WeChat.Portal
 {
@@ -27,8 +24,6 @@ namespace WeChat.Portal
             builder.RegisterControllers(allAssembly); //注入所有Controller
             builder.RegisterApiControllers(allAssembly);
             var container = builder.Build();
-            IocManager.Initialization(new AutofacManager(container));
-
             configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
@@ -42,7 +37,7 @@ namespace WeChat.Portal
             var allServices =
                 assemblys.SelectMany(m => m.GetTypes()).Where(m => baseType.IsAssignableFrom(m) && m != baseType);
             //var allAssembly = Assembly.GetExecutingAssembly();
-            builder.RegisterInstance(new Log4NetHelper()).As<ILogger>();
+            builder.RegisterInstance(new TextLogger()).As<ILogger>();
             builder.RegisterInstance<ICacheManager>(new CacheManager());
             //// Scan an assembly for components
             builder.RegisterAssemblyTypes(assemblys.ToArray())

@@ -18,7 +18,7 @@ namespace WeChat.Portal
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Filters.Add(new ElmahErrorAttribute());
+            config.Filters.Add(new ApiExceptionFilterAttribute());
             config.Filters.Add(new ApiActionFilterAttribute());
          
         }

@@ -1,4 +1,5 @@
 using System.Web.Http.Filters;
+using System.Web.Mvc;
 using Aurore.Framework.Core;
 using Aurore.Framework.Core.Exceptions;
 using Aurore.Framework.Web.Core;
@@ -11,7 +12,7 @@ namespace Aurore.Framework.Web.Mvc.Filters
 
         public ApiExceptionFilterAttribute()
         {
-            _logger = IocManager.Resolve<ILogger>();
+            _logger = DependencyResolver.Current.GetService<ILogger>();
         }
         public override void OnException(HttpActionExecutedContext filterContext)
         {
